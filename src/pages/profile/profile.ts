@@ -55,4 +55,16 @@ export class ProfilePage {
       ccnum: this.ccnum
     });
   }
+
+  navigateToProfile() {
+    this.navCtrl.push(ProfilePage, {
+      username: this.username,
+      password: this.password,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email,
+      address: this.address,
+      ccnum: this.ccnum
+    });
+  }
 }

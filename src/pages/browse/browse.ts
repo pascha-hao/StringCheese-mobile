@@ -66,5 +66,28 @@ import { ProfilePage } from '../profile/profile';
     this.ccnum = this.navParams.get("ccnum");
   }
 
+  navigateToBrowse() {
+    this.navCtrl.push(BrowsePage, {
+      username: this.username,
+      password: this.password,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email,
+      address: this.address,
+      ccnum: this.ccnum
+    });
+  }
+
+  navigateToProfile() {
+    this.navCtrl.push(ProfilePage, {
+      username: this.username,
+      password: this.password,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email,
+      address: this.address,
+      ccnum: this.ccnum
+    });
+  }
 
 }
