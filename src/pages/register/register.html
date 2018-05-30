@@ -1,0 +1,48 @@
+<ion-content padding style="background-color: aquamarine">
+    <div align="center">
+        <ion-spinner></ion-spinner>
+        <h1><b>join us</b></h1>
+    </div>
+    <ion-list>
+        <br>
+        <ion-item-group>
+            <ion-item-divider color="danger">Personal Information</ion-item-divider>
+            <ion-item>
+                <ion-input type="text" placeholder="First Name" [(ngModel)]="firstname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="Last Name" [(ngModel)]="lastname"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="date" placeholder="Birth Date" [(ngModel)]="birth"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="Email" [(ngModel)]="email"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="Username" [(ngModel)]="username"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+            </ion-item>
+            <ion-item-divider color="danger">Billing Information</ion-item-divider>
+            <ion-item>
+                <ion-input type="text" placeholder="Billing Address" [(ngModel)]="address"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="Credit Card Number" [(ngModel)]="ccnum"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="date" placeholder="Expiration Date" [(ngModel)]="exp"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-input type="text" placeholder="CVC" [(ngModel)]="cvc"></ion-input>
+            </ion-item>
+        </ion-item-group>
+    </ion-list>
+
+    <div align="center">
+        <button ion-button (click)="navigateToHome()">Register</button>
+    </div>
+
+</ion-content>

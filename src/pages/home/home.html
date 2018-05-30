@@ -1,0 +1,33 @@
+<ion-content padding style="background-color: aquamarine">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div align="center">
+      <ion-spinner></ion-spinner>
+      <h1><b>buffering_aid</b></h1>
+    </div>
+  <ion-list>
+  <br>
+  <br>
+  <br>
+  <ion-item>
+      <ion-input type="text" placeholder="Username" [(ngModel)]="username"></ion-input>
+  </ion-item>
+  
+  <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+  </ion-item>
+  </ion-list>
+  
+  <div align="center">
+    <button ion-button (click)="navigateToLogin()">Login</button>
+    <br><br><br><br><br><br>
+    Don't have an account?
+    <br>
+    <button ion-button clear (click)="navigateToRegister()" small>Sign up here</button>
+  </div>
+  
+</ion-content>

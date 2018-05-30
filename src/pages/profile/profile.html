@@ -1,0 +1,76 @@
+<ion-content padding style="background-color: aquamarine">
+  <div>
+    <ion-header>
+      <ion-toolbar>
+        <ion-segment>
+          <ion-segment-button value="profile">
+            <ion-icon name="contact"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="newsfeed">
+            <ion-icon name="globe"></ion-icon>
+          </ion-segment-button>
+          <ion-segment-button value="explore" (click)="navigateToBrowse()">
+            <ion-icon name="compass"></ion-icon>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-toolbar>
+    </ion-header>
+  </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  <div>
+    <div align="right">
+      Edit&nbsp;
+      <ion-icon name="create"></ion-icon>
+    </div>
+    <div align="center">
+      <h1>
+        <b>{{firstname}} {{lastname}}</b>
+      </h1>
+      <ion-img width="140" height="140" src="/assets/pro2018ix.jpg"></ion-img>
+      <button ion-button full clear small (click)="navigateToHome()">
+          Log Out
+      </button>
+    </div>
+  </div>
+  <br>
+  <hr>
+
+  <ion-item-group>
+    <ion-item-divider color="danger">Preferences</ion-item-divider>
+    <ion-item>Username: {{username}}</ion-item>
+    <ion-item>Password: {{password}}</ion-item>
+    <ion-item>Email: {{email}}</ion-item>
+    <ion-item>Privacy:</ion-item>
+    <ion-item>Settings</ion-item>
+    <ion-item-divider color="danger">Billing Information</ion-item-divider>
+    <ion-item>Billing Address: {{address}}</ion-item>
+    <ion-item>Credit Card Number: {{ccnum}}</ion-item>
+    <ion-item-divider color="danger">Statistics</ion-item-divider>
+    <ion-item>Total Donated:</ion-item>
+    <ion-item>Top Charity:</ion-item>
+    <ion-item-divider color="secondary">My Charities</ion-item-divider>
+    <button ion-button full clear small>
+      Good Charity
+    </button>
+    <hr>
+    <button ion-button full clear small>
+      Fun Charity
+    </button>
+    <hr>
+    <button ion-button full clear small>
+      Bad Charity
+    </button>
+    <hr>
+    <button ion-button full clear small>
+      Other Charity
+    </button>
+    <ion-item-divider color="dark">Payment History</ion-item-divider>
+    <ion-item>
+      <b>5/29/18:</b> $30 to good charity</ion-item>
+    <ion-item>
+      <b>5/29/18:</b> $5,000,000 to fun charity</ion-item>
+  </ion-item-group>
+</ion-content>
