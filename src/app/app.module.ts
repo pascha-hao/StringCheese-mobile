@@ -10,6 +10,8 @@ import { ProfilePage } from '../pages/profile/profile'
 import { RegisterPage } from '../pages/register/register';
 import { BrowsePage } from '../pages/browse/browse';
 import { CharityPage } from '../pages/charity/charity';
+import { DonationsPage } from '../pages/donations/donations';
+
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { CharityPage } from '../pages/charity/charity';
     ProfilePage,
     RegisterPage,
     BrowsePage,
-    CharityPage
+    CharityPage,
+    DonationsPage
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import { CharityPage } from '../pages/charity/charity';
     ProfilePage,
     RegisterPage,
     BrowsePage,
-    CharityPage
+    CharityPage,
+    DonationsPage
 
   ],
   providers: [

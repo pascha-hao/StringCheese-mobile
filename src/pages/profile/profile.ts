@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { BrowsePage } from '../browse/browse';
+import { DonationsPage } from '../donations/donations';
 
 
 @Component({
@@ -58,6 +59,18 @@ export class ProfilePage {
 
   navigateToProfile() {
     this.navCtrl.push(ProfilePage, {
+      username: this.username,
+      password: this.password,
+      firstname: this.firstname,
+      lastname: this.lastname,
+      email: this.email,
+      address: this.address,
+      ccnum: this.ccnum
+    });
+  }
+
+  navigateToDonations() {
+    this.navCtrl.push(DonationsPage, {
       username: this.username,
       password: this.password,
       firstname: this.firstname,
