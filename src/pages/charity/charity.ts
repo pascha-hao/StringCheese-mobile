@@ -1,5 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { MyCharity } from '../../models/myCharity';
+import { User } from '../../models/user';
+import { Charity } from '../../models/charityProfile';
+import { DonationsPage } from '../donations/donations';
+import { PaymentPage } from '../payment/payment';
 
 /**
  * Generated class for the CharityPage page.
@@ -14,31 +19,38 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class CharityPage {
 
-  public username: string;
-    public password: string;
-    public firstname: string;
-    public lastname: string;
-    public email: string;
-    public address: string;
-    public ccnum: string;
-    public name: string;
-    public description: string;
-    public story: string;
+    public user: User = new User();
+    public charity: Charity = new Charity();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+    constructor(public navCtrl: NavController, public navParams: NavParams) {
+      this.charity = this.navParams.get("charity");
+      this.user = this.navParams.get("user");
+    }
+
+  navigateToCharity(item) {
+    this.navCtrl.push(CharityPage, {
+      charity: this.charity,
+      user: this.user
+    });
   }
 
-  ionViewDidLoad() {
-    this.username = this.navParams.get("username");
-    this.password = this.navParams.get("password");
-    this.firstname = this.navParams.get("firstname");
-    this.lastname = this.navParams.get("lastname");
-    this.email = this.navParams.get("email");
-    this.address = this.navParams.get("address");
-    this.ccnum = this.navParams.get("ccnum");
-    this.name = this.navParams.get("name");
-    this.description = this.navParams.get("description");
-    this.story = this.navParams.get("story");
+  // ionViewDidLoad() {
+  //   this.user = this.navParams.get("user");
+  //   this.charity = this.navParams.get("charity");
+  // }
+
+  navigateToDonations() {
+    this.navCtrl.push(DonationsPage, {
+      user: this.user,
+      charity: this.charity,
+    });
   }
 
+  navigateToPayment() {
+    this.navCtrl.push(PaymentPage, {
+      user: this.user,
+      charity: this.charity,
+    });
+  }
 }

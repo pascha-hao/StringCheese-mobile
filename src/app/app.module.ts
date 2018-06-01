@@ -11,7 +11,7 @@ import { RegisterPage } from '../pages/register/register';
 import { BrowsePage } from '../pages/browse/browse';
 import { CharityPage } from '../pages/charity/charity';
 import { DonationsPage } from '../pages/donations/donations';
-
+import { PaymentPage } from '../pages/payment/payment';
 
 @NgModule({
   declarations: [
@@ -21,6 +21,7 @@ import { DonationsPage } from '../pages/donations/donations';
     RegisterPage,
     BrowsePage,
     CharityPage,
+    PaymentPage,
     DonationsPage
   ],
   imports: [
@@ -35,6 +36,7 @@ import { DonationsPage } from '../pages/donations/donations';
     RegisterPage,
     BrowsePage,
     CharityPage,
+    PaymentPage,
     DonationsPage
 
   ],

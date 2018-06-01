@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title><h1>{{name}}</h1></ion-title>
+    <ion-title><h1>{{charity.name}}</h1></ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,10 +16,10 @@
 <ion-content padding>
   <ion-item-group>
     <ion-item-divider color="danger"><font size="5">Description</font></ion-item-divider>
-    <font size="5"><p padding-right="10" padding-left="10">{{description}}</p></font><hr>
+    <font size="5"><p padding-right="10" padding-left="10">{{charity.slogan}}</p></font><hr>
     <ion-item-divider color="danger"><font size="5">Our Mission</font></ion-item-divider>
-    <font size="4"><p padding-right="10" padding-left="10">{{story}}</p></font><hr>
-    <ion-item-divider color="danger"><font size="5">Total Donated to {{name}}</font></ion-item-divider>
+    <font size="4"><p padding-right="10" padding-left="10">{{charity.about}}</p></font><hr>
+    <ion-item-divider color="danger"><font size="5">Total Donated to {{charity.name}}</font></ion-item-divider>
     <font size="5"><p padding-right="10" padding-left="10">$###.##</p></font><hr>
     <ion-item-divider color="danger"><font size="5">Contact Us</font></ion-item-divider>
     <button ion-button full clear small>
@@ -34,9 +34,14 @@
       Twitter
     </button>
     <ion-item-divider color="danger">
-      <button ion-button full clear small>
-          <font size="5">Donate Now</font>
+      <button ion-button full clear small (click)="navigateToDonations()">
+          <font color="white" size="5">Add to Portfolio</font>
       </button>
     </ion-item-divider>
+    <ion-item-divider color="danger">
+        <button ion-button full clear small (click)="navigateToPayment()">
+            <font color="white" size="5">Donate Now!</font>
+        </button>
+      </ion-item-divider>
   </ion-item-group>
 </ion-content>

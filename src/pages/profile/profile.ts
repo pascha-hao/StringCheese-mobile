@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { BrowsePage } from '../browse/browse';
 import { DonationsPage } from '../donations/donations';
+import { User } from '../../models/user';
 
 
 @Component({
@@ -11,73 +12,34 @@ import { DonationsPage } from '../donations/donations';
 })
 export class ProfilePage {
 
-  public username: string;
-  public password: string;
-  public firstname: string;
-  public lastname: string;
-  public email: string;
-  public address: string;
-  public ccnum: string;
+  public user: User = new User();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-
+    this.user = this.navParams.get("user");
   }
 
   navigateToHome() {
     this.navCtrl.push(HomePage, {
-      username: this.username,
-      password: this.password,
-      firstname: this.firstname,
-      lastname: this.lastname,
-      email: this.email,
-      address: this.address,
-      ccnum: this.ccnum
+      user: this.user,
     });
-  }
-
-  ionViewDidLoad() {
-    this.username = this.navParams.get("username");
-    this.password = this.navParams.get("password");
-    this.firstname = this.navParams.get("firstname");
-    this.lastname = this.navParams.get("lastname");
-    this.email = this.navParams.get("email");
-    this.address = this.navParams.get("address");
-    this.ccnum = this.navParams.get("ccnum");
   }
 
   navigateToBrowse() {
     this.navCtrl.push(BrowsePage, {
-      username: this.username,
-      password: this.password,
-      firstname: this.firstname,
-      lastname: this.lastname,
-      email: this.email,
-      address: this.address,
-      ccnum: this.ccnum
-    });
-  }
-
-  navigateToProfile() {
-    this.navCtrl.push(ProfilePage, {
-      username: this.username,
-      password: this.password,
-      firstname: this.firstname,
-      lastname: this.lastname,
-      email: this.email,
-      address: this.address,
-      ccnum: this.ccnum
+      user: this.user,
     });
   }
 
   navigateToDonations() {
     this.navCtrl.push(DonationsPage, {
-      username: this.username,
-      password: this.password,
-      firstname: this.firstname,
-      lastname: this.lastname,
-      email: this.email,
-      address: this.address,
-      ccnum: this.ccnum
+      user: this.user,
     });
   }
+
+  navigateToProfile() {
+    this.navCtrl.push(ProfilePage, {
+      user: this.user,
+    });
+  }
+
 }

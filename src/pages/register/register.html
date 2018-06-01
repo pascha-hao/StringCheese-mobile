@@ -8,35 +8,32 @@
         <ion-item-group>
             <ion-item-divider color="danger">Personal Information</ion-item-divider>
             <ion-item>
-                <ion-input type="text" placeholder="First Name" [(ngModel)]="firstname"></ion-input>
+                <ion-input type="text" placeholder="First Name" [(ngModel)]="user.firstname"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="text" placeholder="Last Name" [(ngModel)]="lastname"></ion-input>
+                <ion-input type="text" placeholder="Last Name" [(ngModel)]="user.lastname"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="date" placeholder="Birth Date" [(ngModel)]="birth"></ion-input>
+                <ion-input type="date" placeholder="Birth Date"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="text" placeholder="Email" [(ngModel)]="email"></ion-input>
+                <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="text" placeholder="Username" [(ngModel)]="username"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-input type="password" placeholder="Password" [(ngModel)]="password"></ion-input>
+                <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
             </ion-item>
             <ion-item-divider color="danger">Billing Information</ion-item-divider>
             <ion-item>
-                <ion-input type="text" placeholder="Billing Address" [(ngModel)]="address"></ion-input>
+                <ion-input type="text" placeholder="Billing Address"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="text" placeholder="Credit Card Number" [(ngModel)]="ccnum"></ion-input>
+                <ion-input type="text" placeholder="Credit Card Number"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="date" placeholder="Expiration Date" [(ngModel)]="exp"></ion-input>
+                <ion-input type="date" placeholder="Expiration Date"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="text" placeholder="CVC" [(ngModel)]="cvc"></ion-input>
+                <ion-input type="text" placeholder="CVC"></ion-input>
             </ion-item>
         </ion-item-group>
     </ion-list>
