@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpModule } from '@angular/http';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -12,6 +13,7 @@ import { BrowsePage } from '../pages/browse/browse';
 import { CharityPage } from '../pages/charity/charity';
 import { DonationsPage } from '../pages/donations/donations';
 import { PaymentPage } from '../pages/payment/payment';
+import { TutorialPage } from '../pages/tutorial/tutorial';
 
 @NgModule({
   declarations: [
@@ -22,10 +24,12 @@ import { PaymentPage } from '../pages/payment/payment';
     BrowsePage,
     CharityPage,
     PaymentPage,
-    DonationsPage
+    DonationsPage,
+    TutorialPage
   ],
   imports: [
     BrowserModule,
+    HttpModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

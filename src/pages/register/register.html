@@ -1,7 +1,9 @@
 <ion-content padding style="background-color: aquamarine">
     <div align="center">
         <ion-spinner></ion-spinner>
-        <h1><b>join us</b></h1>
+        <h1>
+            <b>join us</b>
+        </h1>
     </div>
     <ion-list>
         <br>
@@ -14,32 +16,16 @@
                 <ion-input type="text" placeholder="Last Name" [(ngModel)]="user.lastname"></ion-input>
             </ion-item>
             <ion-item>
-                <ion-input type="date" placeholder="Birth Date"></ion-input>
-            </ion-item>
-            <ion-item>
                 <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
             </ion-item>
             <ion-item>
                 <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
             </ion-item>
-            <ion-item-divider color="danger">Billing Information</ion-item-divider>
-            <ion-item>
-                <ion-input type="text" placeholder="Billing Address"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-input type="text" placeholder="Credit Card Number"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-input type="date" placeholder="Expiration Date"></ion-input>
-            </ion-item>
-            <ion-item>
-                <ion-input type="text" placeholder="CVC"></ion-input>
-            </ion-item>
         </ion-item-group>
     </ion-list>
 
     <div align="center">
-        <button ion-button (click)="navigateToHome()">Register</button>
+        <button ion-button (click)="register()">Register</button>
     </div>
 
 </ion-content>
