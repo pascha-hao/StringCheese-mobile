@@ -14,12 +14,14 @@ import { CharityPage } from '../pages/charity/charity';
 import { DonationsPage } from '../pages/donations/donations';
 import { PaymentPage } from '../pages/payment/payment';
 import { TutorialPage } from '../pages/tutorial/tutorial';
+import { TabsPage } from '../pages/tabs/tabs';
 import { AuthService } from '../auth.service';
 
 @NgModule({
   declarations: [
     MyApp,
     HomePage,
+    TabsPage,
     ProfilePage,
     RegisterPage,
     BrowsePage,
@@ -37,6 +39,7 @@ import { AuthService } from '../auth.service';
   entryComponents: [
     MyApp,
     HomePage,
+    TabsPage,
     ProfilePage,
     RegisterPage,
     BrowsePage,

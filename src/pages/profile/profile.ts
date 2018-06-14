@@ -15,7 +15,9 @@ export class ProfilePage {
   public user: User = new User();
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.user = this.navParams.get("user");
+    if (this.navParams.get('user')) {
+      let user = this.navParams.get('user');
+    }
   }
 
   navigateToHome() {
