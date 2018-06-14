@@ -1,6 +1,16 @@
-<ion-content padding style="background-color: aquamarine">
+<ion-header>
+    <ion-navbar>
+      <ion-title>
+        <div align="center"><p style="font-family: Lobster; font-size: 25px; color: black"> Register </p></div>
+      </ion-title>
+    </ion-navbar>
+  </ion-header>
+
+
+
+
+<ion-content padding style="background-color:whitesmoke">
     <div align="center">
-        <ion-spinner></ion-spinner>
         <h1>
             <b>join us</b>
         </h1>
@@ -8,7 +18,7 @@
     <ion-list>
         <br>
         <ion-item-group>
-            <ion-item-divider color="danger">Personal Information</ion-item-divider>
+            <ion-item-divider color="primary">Personal Information</ion-item-divider>
             <ion-item>
                 <ion-input type="text" placeholder="First Name" [(ngModel)]="user.firstname"></ion-input>
             </ion-item>

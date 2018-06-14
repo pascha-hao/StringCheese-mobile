@@ -1,14 +1,20 @@
-<ion-content padding style="background-color: aquamarine">
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <div align="center">
-      <ion-spinner></ion-spinner>
-      <h1><b>buffering_aid</b></h1>
-    </div>
+<ion-content padding style="background-color:whitesmoke">
+
+
+<ion-header>
+      <ion-navbar>
+        <ion-title>
+          <div align="center"><p style="font-family: Lobster; font-size: 25px;"> Charities </p></div>
+        </ion-title>
+      </ion-navbar>
+    </ion-header>
+
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  
   <ion-list>
   <br>
   <br>
@@ -20,7 +26,7 @@
   <ion-item>
       <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
   </ion-item>
-  </ion-list>
+  </ion-list> 
   
   <div align="center">
     <button ion-button (click)="login()">Login</button>
@@ -29,5 +35,5 @@
     <br>
     <button ion-button clear (click)="navigateToRegister()" small>Sign up here</button>
   </div>
-  
+
 </ion-content>
