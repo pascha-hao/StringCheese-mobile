@@ -56,7 +56,8 @@ export class HomePage {
 
       this.navCtrl.push(ProfilePage);
     }
-    this.authService.login(this.email, this.password, callback);
+    console.log(this.user);
+    this.authService.login(this.user.email, this.user.password, callback);
   
   }
 
