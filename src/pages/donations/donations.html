@@ -8,10 +8,12 @@
 
 <ion-content padding>
 
-  <section class="chart-wrapper">
-    <canvas align="center" #pieChart></canvas>
-  </section>
-
+  <ion-card>
+    <ion-card-content>
+      <canvas #doughnutCanvas></canvas>
+    </ion-card-content>
+  </ion-card>
+  
   <button ion-button full clear small (click)="update()">
       Update Chart
   </button>
@@ -20,18 +22,19 @@
     <ion-item>
         Total Monthly Donation Amount:
     </ion-item>
+  
     <ion-item>
         <ion-label fixed>$</ion-label>
         <ion-input type="text" [(ngModel)]="total"></ion-input>
     </ion-item>
-    <ion-item *ngFor="let myCharity of user.myCharities">
+    <ion-item *ngFor="let charity of charitiesFinal">
       <ion-list no-lines>
-        {{myCharity.name}}
+        {{charity.name}}
         <ion-item>
-              <div align="right"><ion-badge>{{myCharity.percentage}}% of Total Monthly Donations</ion-badge></div>
+              <div align="right"><ion-badge>{{charity.percentage}}% of Total Monthly Donations</ion-badge></div>
         </ion-item>
         <ion-item>
-          <ion-range min="0" max="100" step="5" snaps="true" [(ngModel)]="myCharity.percentage" color="danger">
+          <ion-range min="0" max="100" step="5" snaps="true" [(ngModel)]="charity.percentage" color="danger">
             <ion-icon range-left small color="danger" name="heart"></ion-icon>
             <ion-icon range-right color="danger" name="heart"></ion-icon>
           </ion-range>

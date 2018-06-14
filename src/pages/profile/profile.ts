@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { BrowsePage } from '../browse/browse';
 import { DonationsPage } from '../donations/donations';
@@ -14,16 +14,15 @@ export class ProfilePage {
 
   public user: User = new User();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private app: App) {
     if (this.navParams.get('user')) {
       let user = this.navParams.get('user');
     }
   }
 
   navigateToHome() {
-    this.navCtrl.push(HomePage, {
-      user: this.user,
-    });
+    localStorage.clear();
+    this.app.getRootNav().setRoot(HomePage);
   }
 
   navigateToBrowse() {
