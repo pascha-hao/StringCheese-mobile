@@ -6,6 +6,7 @@ import { ProfilePage } from '../profile/profile';
 import { RegisterPage } from '../register/register';
 import { User } from '../../models/user';
 import { TutorialPage } from '../tutorial/tutorial';
+import { AuthService } from '../../auth.service'
 
 @Component({
   selector: 'page-home',
@@ -14,8 +15,15 @@ import { TutorialPage } from '../tutorial/tutorial';
 export class HomePage {
 
   public user: User = new User();
+  public email: string;
+  public password: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public http: Http,
+    public authService: AuthService
+  ) {
     if (this.navParams.get('user')) {
       let user = this.navParams.get('user');
       //this.user.email = user.email;
@@ -40,25 +48,16 @@ export class HomePage {
   }
 
   login() {
-    this.http
-      .post("http://localhost:3000/login", {
-        email: this.user.email,
-        password: this.user.password
-      })
-      .subscribe(
-        result => {
-          console.log(result);
+    let callback = (err) => {
+      if (err) {
+        //todo: display error
+       return;
+      }
 
-          // Our username and password (on this) should have data from the user
-          this.navCtrl.push(ProfilePage, {
-            user: this.user
-          });
-        },
-
-        error => {
-          console.log(error);
-        }
-      );
+      this.navCtrl.push(ProfilePage);
+    }
+    this.authService.login(this.email, this.password, callback);
+  
   }
 
 }
