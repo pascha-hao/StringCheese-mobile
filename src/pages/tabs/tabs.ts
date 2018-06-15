@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { HomePage } from '../home/home';
-import { RegisterPage } from '../register/register';
+//import { HomePage } from '../home/home';
+//import { RegisterPage } from '../register/register';
 import { PaymentPage } from '../payment/payment';
 import { BrowsePage } from '../browse/browse';
 import { DonationsPage } from '../donations/donations';

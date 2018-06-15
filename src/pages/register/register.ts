@@ -3,7 +3,7 @@ import { NavController } from 'ionic-angular';
 import { Http, Headers } from "@angular/http";
 
 import { HomePage } from '../home/home';
-import { ProfilePage } from '../profile/profile';
+//import { ProfilePage } from '../profile/profile';
 import { User } from '../../models/user';
 
 

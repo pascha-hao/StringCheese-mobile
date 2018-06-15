@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Http, Headers } from "@angular/http";
+import { Http } from "@angular/http";
+//import { Headers } from "@angular/http";
 
 import { HomePage } from '../home/home';
 import { ProfilePage } from '../profile/profile';
 import { User } from '../../models/user';
 
 
-import { AuthService } from '../../auth.service'
+//import { AuthService } from '../../auth.service'
 /**
  * Generated class for the EditPage page.
  *

@@ -1,15 +1,15 @@
 import { Component, ViewChild } from '@angular/core';
 import {
-  IonicPage,
+  //IonicPage,
   NavController,
   NavParams
 } from 'ionic-angular';
 
 import { Chart } from '../../../node_modules/chart.js';
-import { MyCharity } from '../../models/myCharity';
-import { Slice } from '../../models/slice';
+//import { MyCharity } from '../../models/myCharity';
+//import { Slice } from '../../models/slice';
 import { User } from '../../models/user';
-import { Charity } from '../../models/charityProfile';
+//import { Charity } from '../../models/charityProfile';
 import { Http } from '@angular/http';
 
 

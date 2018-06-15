@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { Http, Headers } from "@angular/http";
+//import { Headers } from "@angular/http";
+import { Http } from "@angular/http";
 
-import { ProfilePage } from '../profile/profile';
+//import { ProfilePage } from '../profile/profile';
 import { RegisterPage } from '../register/register';
 import { User } from '../../models/user';
 

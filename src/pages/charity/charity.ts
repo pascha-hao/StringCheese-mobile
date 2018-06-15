@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
-import { MyCharity } from '../../models/myCharity';
+//import { MyCharity } from '../../models/myCharity';
 import { User } from '../../models/user';
 import { Charity } from '../../models/charityProfile';
 import { DonationsPage } from '../donations/donations';

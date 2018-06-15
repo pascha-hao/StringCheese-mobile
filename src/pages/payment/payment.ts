@@ -4,8 +4,8 @@ import { NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
 import { Charity } from '../../models/charityProfile';
 import { BrowsePage } from '../browse/browse';
-import { DonationsPage } from '../donations/donations';
-import { ProfilePage } from '../profile/profile';
+//import { DonationsPage } from '../donations/donations';
+//import { ProfilePage } from '../profile/profile';
 
 /**
  * Generated class for the PaymentPage page.
