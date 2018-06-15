@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { BrowsePage } from '../browse/browse';
 import { DonationsPage } from '../donations/donations';
@@ -35,10 +35,10 @@ export class ProfilePage {
           console.log(error);
         }
       );
+    }
     // if (this.navParams.get('user')) {
     //   let user = this.navParams.get('user');
     // }
-  }
 
   // navigateToHome() {
   //   this.navCtrl.push(HomePage, {
@@ -50,7 +50,6 @@ export class ProfilePage {
     localStorage.removeItem('jwt');
 
     this.app.getRootNav().setRoot(HomePage);
-
   }
 
   navigateToBrowse() {

@@ -6,7 +6,12 @@ import { ProfilePage } from '../profile/profile';
 import { RegisterPage } from '../register/register';
 import { User } from '../../models/user';
 import { TutorialPage } from '../tutorial/tutorial';
+<<<<<<< HEAD
 import { AuthService } from '../../auth.service';
+=======
+import { AuthService } from '../../auth.service'
+import { TabsPage } from '../tabs/tabs';
+>>>>>>> 6dfcdab7985e49e9879b07340f3ba7ef53260521
 
 @Component({
   selector: 'page-home',
@@ -29,22 +34,16 @@ export class HomePage {
   ) {
     if (this.navParams.get('user')) {
       let user = this.navParams.get('user');
-      //this.user.email = user.email;
-      //this.user.password = user.password;
       this.user = user;
-      this.user.id = 1;
     }
   }
 
   navigateToLogin() {
-    this.navCtrl.push(ProfilePage, {
+    this.navCtrl.push(TabsPage, {
       user: this.user
     });
   }
 
-  // navigateToLogin() {
-  //   this.navCtrl.push(TutorialPage);
-  // }
 
   navigateToRegister() {
     this.navCtrl.push(RegisterPage);
@@ -57,7 +56,7 @@ export class HomePage {
        return;
       }
 
-      this.navCtrl.push(ProfilePage);
+      this.navCtrl.push(TabsPage);
     }
     console.log(this.user);
     this.authService.login(this.user.email, this.user.password, callback);

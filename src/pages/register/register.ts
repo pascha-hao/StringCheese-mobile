@@ -35,7 +35,7 @@ export class RegisterPage {
       .subscribe(
         result => {
           let token = result.json().token;
-
+          console.log(token)
           // Our username and password (on this) should have data from the user
           this.navCtrl.push(HomePage, {
               user: this.user,
