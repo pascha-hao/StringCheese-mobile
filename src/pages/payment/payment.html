@@ -15,13 +15,13 @@
 
 <ion-content padding>
   <ion-item-group>
-    <ion-item-divider color="danger"><font size="5">How much would you like to donate?</font></ion-item-divider>
+    <ion-item-divider color="white"><font size="5" style="font-family: Poppins; color: #eb3333">Amount to donate:</font></ion-item-divider>
     <ion-item>
         <ion-label fixed>$</ion-label>
         <ion-input type="number" [(ngModel)]="payment"></ion-input>
     </ion-item>
     <ion-item-divider color="secondary">
-      <button ion-button full clear small (click)="navigateToProfile()">
+      <button ion-button full clear small (click)="navigateToBrowse()">
           <font color="white" size="5">Donate!</font>
       </button>
     </ion-item-divider>

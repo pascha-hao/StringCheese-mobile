@@ -3,8 +3,8 @@ import { NavController, NavParams, App } from 'ionic-angular';
 import { HomePage } from '../home/home';
 import { BrowsePage } from '../browse/browse';
 import { DonationsPage } from '../donations/donations';
+import { EditPage } from '../edit/edit';
 import { User } from '../../models/user';
-import { App } from 'ionic-angular';
 import { Http } from '@angular/http';
 
 
@@ -54,6 +54,12 @@ export class ProfilePage {
 
   navigateToBrowse() {
     this.navCtrl.push(BrowsePage, {
+      user: this.user,
+    });
+  }
+
+  navigateToEdit() {
+    this.navCtrl.push(EditPage, {
       user: this.user,
     });
   }

@@ -3,4 +3,5 @@ export class Charity {
     name: string;
     slogan: string;
     about: string;
+    photo: string;
 }

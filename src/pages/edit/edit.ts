@@ -6,6 +6,8 @@ import { HomePage } from '../home/home';
 import { ProfilePage } from '../profile/profile';
 import { User } from '../../models/user';
 
+
+import { AuthService } from '../../auth.service'
 /**
  * Generated class for the EditPage page.
  *
@@ -34,7 +36,7 @@ export class EditPage {
 
   edit() {
     this.http
-      .post("http://localhost:3000/register", {
+      .post("http://localhost:3000/edit", {
         firstname: this.user.firstname,
         lastname: this.user.lastname,
         email: this.user.email,
@@ -45,7 +47,7 @@ export class EditPage {
           console.log(result);
 
           // Our username and password (on this) should have data from the user
-          this.navCtrl.push(HomePage, {});
+          this.navCtrl.push(ProfilePage, {});
         },
 
         error => {

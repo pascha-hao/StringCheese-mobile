@@ -5,13 +5,9 @@ import { Http, Headers } from "@angular/http";
 import { ProfilePage } from '../profile/profile';
 import { RegisterPage } from '../register/register';
 import { User } from '../../models/user';
-import { TutorialPage } from '../tutorial/tutorial';
-<<<<<<< HEAD
-import { AuthService } from '../../auth.service';
-=======
+
 import { AuthService } from '../../auth.service'
 import { TabsPage } from '../tabs/tabs';
->>>>>>> 6dfcdab7985e49e9879b07340f3ba7ef53260521
 
 @Component({
   selector: 'page-home',
@@ -49,7 +45,7 @@ export class HomePage {
     this.navCtrl.push(RegisterPage);
   }
 
-  login(storage: Storage) {
+  login() {
     let callback = (err) => {
       if (err) {
         //todo: display error

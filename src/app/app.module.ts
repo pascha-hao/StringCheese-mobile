@@ -12,8 +12,8 @@ import { RegisterPage } from '../pages/register/register';
 import { BrowsePage } from '../pages/browse/browse';
 import { CharityPage } from '../pages/charity/charity';
 import { DonationsPage } from '../pages/donations/donations';
+import { EditPage } from '../pages/edit/edit';
 import { PaymentPage } from '../pages/payment/payment';
-import { TutorialPage } from '../pages/tutorial/tutorial';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthService } from '../auth.service';
 
@@ -28,7 +28,7 @@ import { AuthService } from '../auth.service';
     CharityPage,
     PaymentPage,
     DonationsPage,
-    TutorialPage
+    EditPage
   ],
   imports: [
     BrowserModule,
@@ -45,7 +45,8 @@ import { AuthService } from '../auth.service';
     BrowsePage,
     CharityPage,
     PaymentPage,
-    DonationsPage
+    DonationsPage,
+    EditPage
 
   ],
   providers: [

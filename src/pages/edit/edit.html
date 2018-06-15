@@ -1,6 +1,5 @@
 <ion-content padding style="background-color:whitesmoke">
   <div align="center">
-      <ion-spinner></ion-spinner>
       <h1>
           <b>Edit Profile</b>
       </h1>
@@ -9,23 +8,26 @@
       <br>
       <ion-item-group>
           <ion-item-divider color="danger">Edit Profile</ion-item-divider>
+          <br>
+          First Name:
           <ion-item>
               <ion-input type="text" placeholder="First Name" [(ngModel)]="user.firstname"></ion-input>
           </ion-item>
+          <br>
+          Last Name:
           <ion-item>
-              <ion-input type="text" placeholder="Last Name" [(ngModel)]="user.lastname"></ion-input>
+              <ion-input type="text" placeholder="Last Name" [(ngModel)]="user.firstname"></ion-input>
           </ion-item>
+          <br>
+          Email:
           <ion-item>
-              <ion-input type="text" placeholder="{{user.email}}" [(ngModel)]="user.email"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
+              <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
           </ion-item>
       </ion-item-group>
   </ion-list>
 
   <div align="center">
-      <button ion-button (click)="register()">Apply Changes</button>
+      <button ion-button (click)="edit()">Apply Changes</button>
   </div>
 
 </ion-content>

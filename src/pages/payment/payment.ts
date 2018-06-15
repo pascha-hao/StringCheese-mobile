@@ -33,8 +33,8 @@ export class PaymentPage {
     console.log('ionViewDidLoad PaymentPage');
   }
 
-  navigateToProfile() {
-    this.navCtrl.push(ProfilePage, {
+  navigateToBrowse() {
+    this.navCtrl.push(BrowsePage, {
       user: this.user,
       payment: this.payment
     });
