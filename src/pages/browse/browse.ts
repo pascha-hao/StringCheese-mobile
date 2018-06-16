@@ -78,6 +78,7 @@ import { User } from '../../models/user';
     this.charities.push(charity4);
     this.charities.push(charity5);
     this.charities.push(charity6);
+
   }
 
   ionViewDidLoad() {
