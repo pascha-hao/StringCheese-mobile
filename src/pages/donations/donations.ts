@@ -6,10 +6,10 @@ import {
 } from 'ionic-angular';
 
 import { Chart } from '../../../node_modules/chart.js';
-//import { MyCharity } from '../../models/myCharity';
-//import { Slice } from '../../models/slice';
+import { MyCharity } from '../../models/myCharity';
+import { Slice } from '../../models/slice';
 import { User } from '../../models/user';
-//import { Charity } from '../../models/charityProfile';
+import { Charity } from '../../models/charityProfile';
 import { Http } from '@angular/http';
 
 
@@ -20,140 +20,144 @@ import { Http } from '@angular/http';
 })
 
 export class DonationsPage {
-  @ViewChild('doughnutCanvas') doughnutCanvas;
-  doughnutChart: any;
-  user: User;
-  jwt: string;
-  username: string;
-  donationAmount: Array<number> = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
-  charities: Array<string> = ["", "", "", "", "", "", "", "", ""];
-  charitiesFinal: Array<string> = [];
-  donationAmountFinal: Array<number> = [];
 
-  constructor(
-    public navCtrl: NavController,
-    public navParams: NavParams,
-    public http: Http
-  ) {
-
-    var val = localStorage.getItem('jwt');
-    console.log(this.jwt);
-    this.jwt = val;
-    this.http
-      .get("http://localhost:3000/users", {
-        params: {
-          jwt: this.jwt
-        }
-      })
-      .subscribe(
-        result => {
-          let tUser = result.json().user;
-          this.user = tUser;
-          this.username = tUser.username
-          this.http
-            .get("http://localhost:3000/users/{user_id}/donations", {
-              params: {
-                user_id: tUser.id
-              }
-            })
-            .subscribe(
-              result => {
-                var donations = result.json();
-                let i = 0;
-                let len = donations.length;
-                let tval = 0;
-                while (i < len) {
-                  tval = donations[i].amount_donated;
-                  this.donationAmount[donations[i].charity_id] += tval;
-                  i++
-                }
-                this.http
-                  .get("http://localhost:3000/charities")
-                  .subscribe(
-                    result => {
-                      let i = 0;
-                      let charityList = result.json();
-                      while (i < charityList.length) {
-                        this.charities[charityList[i].id] = charityList[i].name;
-                        i++;
-                      }
-                      this.makeDonut()
-                    },
-                    error => {
-                      console.log(error);
-                    }
-                  );
-              },
-              error => {
-                console.log(error);
-              }
-
-            );
-        },
-        error => {
-          console.log(error);
-        }
-
-      );
+  public user: User = new User();
+  public technologies: Array<Slice> = [];
+  public amount: number = 0;
+  
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams) {
+    
+    let colorArr: Array<string> = ["rgb(128,0,0)", "rgb(220,20,60)", "rgb(255,0,0)", "rgb(255,127,80)", "rgb(205,92,92)", "rgb(255,165,0)", "rgb(255,215,0)", "rgb(128,128,0)", "rgb(154,205,50)", "rgb(85,107,47)", "rgb(124,252,0)", "rgb(144,238,144)", "rgb(143,188,143)", "rgb(47,79,79)", "rgb(0,139,139)", "rgb(0,255,255)", "rgb(224,255,255)", "rgb(70,130,180)", "rgb(30,144,255)", "rgb(25,25,112)"];
 
 
+      let newSlice = new Slice();
+      newSlice.technology = "Save the Toucans";
+      newSlice.time = 40;
+      newSlice.color = colorArr[0];
+      this.technologies.push(newSlice);
+
+      let newSlice1 = new Slice();
+      newSlice1.technology = "Paint the Beaks Fund";
+      newSlice1.time = 100;
+      newSlice1.color = colorArr[5];
+      this.technologies.push(newSlice1);
+
+      let newSlice2 = new Slice();
+      newSlice2.technology = "Fruit Addiction Rehab";
+      newSlice2.time = 160;
+      newSlice2.color = colorArr[15];
+      this.technologies.push(newSlice2);
+    
   }
 
 
-  makeDonut() {
-    let i = 0;
-    let len = this.charitiesFinal.length;
-    // while (i < len) {
-    //   this.charitiesFinal.pop();
-    //   this.donationAmountFinal.pop();
-    //   i++;
-    // }
-    // while (i < this.charities.length) {
-    //   if (this.donationAmount[i] != 0) {
-    //     this.donationAmountFinal.push(this.donationAmount[i]);
-    //     this.charitiesFinal.push(this.charities[i]);
-    //   }
-    //   i++;
-    // }
 
-    this.charitiesFinal.push("Save the Tucans");
-    this.charitiesFinal.push("Paint the Beaks Fund");
-    this.charitiesFinal.push("Bring Tucans Back");
-    this.donationAmountFinal.push(20);
-    this.donationAmountFinal.push(80);
-    this.donationAmountFinal.push(300);
+  @ViewChild('pieChart') pieChart;
+  @ViewChild('barChart') barChart;
+  @ViewChild('lineChart') lineChart;
 
 
-    this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
-      type: 'doughnut',
-      data: {
-        labels: ["charity","charity1"],
-        datasets: [{
-          label: 'Percent of donation',
-          data: [1,2],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)'
-          ],
-          hoverBackgroundColor: [
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56",
-            "#FF6384",
-            "#36A2EB",
-            "#FFCE56"
-          ]
-        }]
-      }
+  public pieChartEl: any;
+  public barChartEl: any;
+  public lineChartEl: any;
+  public chartLabels: any = [];
+  public chartValues: any = [];
+  public chartColours: any = [];
+  public chartHoverColours: any = [];
+  public chartLoadingEl: any;
 
-    });
+  ionViewDidLoad() {
+    this.defineChartData();
+    this.createPieChart();
+    this.createBarChart();
+    this.createLineChart();
   }
 
   update() {
     this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }
+
+
+defineChartData(): void {
+  let k: any;
+
+  for (k in this.technologies) {
+    var tech = this.technologies[k];
+
+    this.chartLabels.push(tech.technology);
+    this.chartValues.push(tech.time);
+    this.chartColours.push(tech.color);
+    //this.chartHoverColours.push(tech.hover);
+  }
+}
+
+
+
+
+/**
+*
+* Configure the Pie chart, define configuration options
+*
+*/
+createPieChart() {
+
+  this.pieChartEl = new Chart(this.pieChart.nativeElement,
+    {
+      type: 'pie',
+      data: {
+        labels: this.chartLabels,
+        datasets: [{
+          label: 'Donation Breakdown',
+          data: this.chartValues,
+          duration: 2000,
+          easing: 'easeInQuart',
+          backgroundColor: this.chartColours,
+        }]
+      },
+      options: {
+        maintainAspectRatio: false,
+        layout: {
+          padding: {
+            left: 10,
+            right: 0,
+            top: 0,
+            bottom: 0
+          }
+        },
+        animation: {
+          duration: 5000
+        }
+      }
+    });
+
+  this.chartLoadingEl = this.pieChartEl.generateLegend();
+}
+
+
+
+
+/**
+ *
+ * Configure the Bar chart, define configuration options
+ *
+ */
+createBarChart(): void {
+  // We'll define the pie chart related logic here shortly
+}
+
+
+
+
+/**
+ *
+ * Configure the Line chart, define configuration options
+ *
+ */
+createLineChart(): void {
+  // We'll define the pie chart related logic here shortly
+}
+
+
+
 }

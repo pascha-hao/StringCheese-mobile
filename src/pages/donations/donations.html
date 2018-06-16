@@ -11,7 +11,9 @@
   <ion-card>
     <ion-card-content>
       <ion-label>Your Donation History</ion-label>
-      <canvas #doughnutCanvas></canvas>
+        <section class="chart-wrapper">
+            <canvas align="center" #pieChart></canvas>
+        </section>
     </ion-card-content>
   </ion-card>
   
@@ -21,27 +23,16 @@
   
   <ion-list>
     <ion-item>
-        Total Monthly Donation Amount:
+        Total Amount Donated: $300
     </ion-item>
-  
-    <ion-item>
-        <ion-label fixed>$</ion-label>
-        <ion-input type="text" [(ngModel)]="total"></ion-input>
-    </ion-item>
-    <ion-item *ngFor="let charity of charitiesFinal">
-      <ion-list no-lines>
-        {{charity.name}}
+
+        <ion-item-divider color="dark">Donation History</ion-item-divider>
         <ion-item>
-              <div align="right"><ion-badge>{{charity.percentage}}% of Total Monthly Donations</ion-badge></div>
-        </ion-item>
+          $40 to Save the Toucans</ion-item>
         <ion-item>
-          <ion-range min="0" max="100" step="5" snaps="true" [(ngModel)]="charity.percentage" color="danger">
-            <ion-icon range-left small color="danger" name="heart"></ion-icon>
-            <ion-icon range-right color="danger" name="heart"></ion-icon>
-          </ion-range>
-        </ion-item>
-      </ion-list>
-    </ion-item>
+          $100 to Paint the Beaks Fund</ion-item>
+          <ion-item>
+          $160 to Fruit Addiction Rehab</ion-item>
   </ion-list>
 
 </ion-content>
