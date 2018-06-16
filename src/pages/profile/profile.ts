@@ -34,21 +34,12 @@ export class ProfilePage {
         error => {
           console.log(error);
         }
+        
       );
     }
-    // if (this.navParams.get('user')) {
-    //   let user = this.navParams.get('user');
-    // }
 
-  // navigateToHome() {
-  //   this.navCtrl.push(HomePage, {
-  //     user: this.user,
-  //   });
-  // }
-
-  navigateToHome() {
-    localStorage.removeItem('jwt');
-
+  logOut() {
+    localStorage.clear();
     this.app.getRootNav().setRoot(HomePage);
   }
 

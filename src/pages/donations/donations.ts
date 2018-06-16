@@ -29,6 +29,7 @@ export class DonationsPage {
   charities: Array<string> = ["", "", "", "", "", "", "", "", ""];
   charitiesFinal: Array<string> = [];
   donationAmountFinal: Array<number> = [];
+
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
@@ -102,18 +103,27 @@ export class DonationsPage {
   makeDonut() {
     let i = 0;
     let len = this.charitiesFinal.length;
-    while (i < len) {
-      this.charitiesFinal.pop();
-      this.donationAmountFinal.pop();
-      i++;
-    }
-    while (i < this.charities.length) {
-      if (this.donationAmount[i] != 0) {
-        this.donationAmountFinal.push(this.donationAmount[i]);
-        this.charitiesFinal.push(this.charities[i]);
-      }
-      i++;
-    }
+    // while (i < len) {
+    //   this.charitiesFinal.pop();
+    //   this.donationAmountFinal.pop();
+    //   i++;
+    // }
+    // while (i < this.charities.length) {
+    //   if (this.donationAmount[i] != 0) {
+    //     this.donationAmountFinal.push(this.donationAmount[i]);
+    //     this.charitiesFinal.push(this.charities[i]);
+    //   }
+    //   i++;
+    // }
+
+    this.charitiesFinal.push("Save the Tucans");
+    this.charitiesFinal.push("Paint the Beaks Fund");
+    this.charitiesFinal.push("Bring Tucans Back");
+    this.donationAmountFinal.push(20);
+    this.donationAmountFinal.push(80);
+    this.donationAmountFinal.push(300);
+
+
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
       type: 'doughnut',
       data: {
