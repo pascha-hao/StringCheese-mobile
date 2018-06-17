@@ -47,7 +47,7 @@ export class ProfilePage {
   // }
 
   navigateToHome() {
-    localStorage.removeItem('jwt');
+    localStorage.clear();
 
     this.app.getRootNav().setRoot(HomePage);
   }
