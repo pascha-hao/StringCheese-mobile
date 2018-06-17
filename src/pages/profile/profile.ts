@@ -34,6 +34,7 @@ export class ProfilePage {
         error => {
           console.log(error);
         }
+        
       );
     }
     // if (this.navParams.get('user')) {
@@ -48,7 +49,10 @@ export class ProfilePage {
 
   navigateToHome() {
     localStorage.clear();
+  }
 
+  logOut() {
+    localStorage.clear();
     this.app.getRootNav().setRoot(HomePage);
   }
 

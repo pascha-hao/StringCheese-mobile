@@ -53,12 +53,10 @@ export class HomePage {
         //todo: display error
        return;
       }
-
       this.navCtrl.push(TabsPage);
     }
     console.log(this.user);
     this.authService.login(this.user.email, this.user.password, callback);
   
   }
-
 }
