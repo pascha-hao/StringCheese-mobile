@@ -52,12 +52,13 @@ export class EditPage {
           let token = result.json().token;
           console.log(token)
           // Our username and password (on this) should have data from the user
-          this.navCtrl.push(ProfilePage, {
-              user: this.user,
-              token,
-          });
+          this.navCtrl.parent.select(4)
+          // (ProfilePage, {
+          //     user: this.user,
+          //     token,
+          // });
 
-          this.navigateToProfilePage()
+    
         },
 
         error => {
