@@ -1,7 +1,8 @@
 export class Charity {
     id: number;
     name: string;
-    slogan: string;
-    about: string;
-    photo: string;
+    description: string;
+    charitycardimg: string;
+    website: string;
+    logo: string;
 }
