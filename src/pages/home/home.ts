@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, App } from 'ionic-angular';
 //import { Headers } from "@angular/http";
 import { Http } from "@angular/http";
 
@@ -26,12 +26,12 @@ export class HomePage {
     public navCtrl: NavController, 
     public navParams: NavParams,
     public http: Http,
-    public authService: AuthService
+    public authService: AuthService,
+    private app: App
 
   ) {
-    if (this.navParams.get('user')) {
-      let user = this.navParams.get('user');
-      this.user = user;
+    if(localStorage.getItem("TOKEN")) {
+      this.app.getRootNav().setRoot(TabsPage);
     }
   }
 
@@ -53,28 +53,9 @@ export class HomePage {
         //todo: display error
        return;
       }
-
       this.navCtrl.push(TabsPage);
     }
     console.log(this.user);
-    this.authService.login(this.user.email, this.user.password, callback);
-    this.http
-      .post("http://localhost:3000/login", {
-        email: this.user.email,
-        password: this.user.password
-      })
-      .subscribe(
-        result => {
-          let token = result.json().token;
-          localStorage.setItem('jwt', token);
-          // Our username and password (on this) should have data from the user
-
-        },
-        error => {
-          console.log(error);
-        }
-      );
-  
+    this.authService.login(this.user.email, this.user.password, callback); 
   }
-
 }

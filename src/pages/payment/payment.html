@@ -21,6 +21,27 @@
         <ion-input type="number" [(ngModel)]="payment"></ion-input>
     </ion-item>
     <ion-item-divider color="light">
+    <ion-item>
+        <ion-label fixed>Name: </ion-label>
+        <ion-input type="String" ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>Address: </ion-label>
+        <ion-input type="String"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>CC Num: </ion-label>
+        <ion-input type="String" ></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>Exp: </ion-label>
+        <ion-input type="String"></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label fixed>CVC: </ion-label>
+        <ion-input type="String"></ion-input>
+    </ion-item>
+    <ion-item-divider color="secondary">
       <button ion-button full clear small (click)="navigateToBrowse()">
           <font color="black" size="5">Donate!</font>
       </button>
@@ -44,11 +65,9 @@
           data-locale="auto">
         </script>
       </form>
-  </ion-item-group>
+
 
   
 
- 
-</ion-content>
 
 

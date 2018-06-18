@@ -7,6 +7,7 @@ import { BrowsePage } from '../browse/browse';
 import { StripeNativePage } from '../stripe-native/stripe-native';
 import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
  
+import { Http } from "@angular/http";
 //import { DonationsPage } from '../donations/donations';
 //import { ProfilePage } from '../profile/profile';
 
@@ -26,10 +27,22 @@ export class PaymentPage {
   public user: User = new User();
   public charity: Charity = new Charity();
   public payment: number;
+  jwt: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
     this.user = this.navParams.get("user");
     this.charity = this.navParams.get("charity");
+    this.jwt = localStorage.getItem('jwt')
+    this.http 
+    .get("http://localhost:3000/users", {
+      params: {
+        jwt: this.jwt
+      }
+    })
+      // .post('/donations'), {
+      //     amount: this.payment,
+      //     date: this.
+      // }
   }
   openJavaScript(){
     this.navCtrl.push(StripeJavaScriptPage)
@@ -37,6 +50,18 @@ export class PaymentPage {
   openNative(){
     this.navCtrl.push(StripeNativePage)
   }
+
+  // createDonation() {
+  //   var val = localStorage.getItem('jwt');
+  //   this.jwt = val;
+
+    
+
+
+  // }
+
+
+
   ionViewDidLoad() {
     console.log('ionViewDidLoad PaymentPage');
   }
