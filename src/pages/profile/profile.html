@@ -3,19 +3,19 @@
     <ion-header>
         <ion-navbar>
           <ion-title>
-            <div align="center"><b><p style="font-family: Poppins; font-size: 12px; color: #eb3333"> toucan donate </p></b></div>
+            <div align="center"><b><p style="font-family: Poppins; font-size: 25px; color: #eb3333"> toucan donate </p></b></div>
           </ion-title>
         </ion-navbar>
       </ion-header>
-
-
   <div>
     <ion-header>
     </ion-header>
   </div>
   <br>
+  <br><br>
+  <br><br>
   <br>
-  <br>
+  
   <div>
     <div align="right" (click)="navigateToEdit()">
       Edit&nbsp;
@@ -23,7 +23,7 @@
     </div>
     <div align="center">
       <h1>
-        <b>{{user.firstname}} {{user.firstname}}</b>
+        <b>{{user.firstname}} {{user.lastname}}</b>
       </h1>
       <ion-img width="140" height="150" src="https://i.pinimg.com/236x/e6/2e/5e/e62e5e1468ce5cb05fcee3bac8788730--toucan-black-and-white.jpg"></ion-img>
       <button ion-button full clear small (click)="navigateToHome()">
@@ -43,26 +43,6 @@
     <ion-item-divider color="danger">Statistics</ion-item-divider>
     <ion-item>Total Donated:</ion-item>
     <ion-item>Top Charity:</ion-item>
-    <ion-item-divider color="secondary">My Charities</ion-item-divider>
-    <button ion-button full clear small>
-      Good Charity
-    </button>
-    <hr>
-    <button ion-button full clear small>
-      Fun Charity
-    </button>
-    <hr>
-    <button ion-button full clear small>
-      Bad Charity
-    </button>
-    <hr>
-    <button ion-button full clear small>
-      Other Charity
-    </button>
-    <ion-item-divider color="dark">Payment History</ion-item-divider>
-    <ion-item>
-      <b>5/29/18:</b> $30 to good charity</ion-item>
-    <ion-item>
-      <b>5/29/18:</b> $5,000,000 to fun charity</ion-item>
+
   </ion-item-group>
 </ion-content>

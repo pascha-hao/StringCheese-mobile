@@ -5,11 +5,21 @@
   Ionic pages and navigation.
 -->
 <ion-header>
+  <ion-navbar>
+    <ion-title *ngIf= "!isSearchbarOpened">
+    </ion-title>
+    <ion-searchbar *ngIf="isSearchbarOpened" > </ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true"></button>
+    </ion-buttons>
+  </ion-navbar>
 
   </ion-header>
 
 
-<ion-content padding style="background-color: whitesmoke">
+
+
+<ion-content padding style="background-color: #EEEEEE">
     <ion-list>
         <ion-item *ngFor="let charity of charities">
           <ion-avatar item-start>
@@ -22,6 +32,12 @@
 
 
       </ion-list>
-
+    <br>
+    <br>
+    <br>
+    <br>
+<div align="center">
+      <ion-img width="300" height="300" src="http://bestdayevereducation.com/uploads/images/Gifs/No-Background/Tucan.gif"></ion-img>
+    </div>
 
 </ion-content>

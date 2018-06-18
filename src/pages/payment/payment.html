@@ -15,16 +15,40 @@
 
 <ion-content padding>
   <ion-item-group>
-    <ion-item-divider color="white"><font size="5" style="font-family: Poppins; color: #eb3333">Amount to donate:</font></ion-item-divider>
+    <ion-item-divider color="light"><font size="5" style="font-family: Poppins; color: #eb3333">Amount to donate:</font></ion-item-divider>
     <ion-item>
         <ion-label fixed>$</ion-label>
         <ion-input type="number" [(ngModel)]="payment"></ion-input>
     </ion-item>
-    <ion-item-divider color="secondary">
+    <ion-item-divider color="light">
       <button ion-button full clear small (click)="navigateToBrowse()">
-          <font color="white" size="5">Donate!</font>
+          <font color="black" size="5">Donate!</font>
       </button>
+
+      <div align="center">
+          <button ion-button large round (click)="openJavaScript()">Donate here! </button>
+        </div>
+
+       
+      
     </ion-item-divider>
+
+    <form action="your-server-side-code" method="POST">
+        <script
+          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+          data-key="pk_test_Wr8cGPVS6aiNLEsuYVi0G1wm"
+          data-amount="999"
+          data-name="Demo Site"
+          data-description="Example charge"
+          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto">
+        </script>
+      </form>
   </ion-item-group>
+
+  
+
+ 
 </ion-content>
+
 

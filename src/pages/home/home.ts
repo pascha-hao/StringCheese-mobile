@@ -49,6 +49,7 @@ export class HomePage {
   login() {
     let callback = (err) => {
       if (err) {
+          console.log("Cannot Log In");
         //todo: display error
        return;
       }

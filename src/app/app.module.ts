@@ -16,6 +16,9 @@ import { EditPage } from '../pages/edit/edit';
 import { PaymentPage } from '../pages/payment/payment';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthService } from '../auth.service';
+import { StripeJavaScriptPage } from '../pages/stripe-java-script/stripe-java-script';
+import { StripeNativePage } from '../pages/stripe-native/stripe-native';
+import { Stripe } from '@ionic-native/stripe';
 
 @NgModule({
   declarations: [
@@ -28,7 +31,9 @@ import { AuthService } from '../auth.service';
     CharityPage,
     PaymentPage,
     DonationsPage,
-    EditPage
+    EditPage,
+    StripeJavaScriptPage,
+    StripeNativePage
   ],
   imports: [
     BrowserModule,
@@ -46,13 +51,16 @@ import { AuthService } from '../auth.service';
     CharityPage,
     PaymentPage,
     DonationsPage,
-    EditPage
+    EditPage,
+    StripeJavaScriptPage,
+    StripeNativePage
 
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthService,
+    Stripe,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

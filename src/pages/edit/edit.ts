@@ -35,6 +35,10 @@ export class EditPage {
     });
   }
 
+  navigateToProfilePage() {
+    this.navCtrl.push(ProfilePage)
+  }
+
   edit() {
     this.http
       .post("http://localhost:3000/edit", {
@@ -45,10 +49,15 @@ export class EditPage {
       })
       .subscribe(
         result => {
-          console.log(result);
-
+          let token = result.json().token;
+          console.log(token)
           // Our username and password (on this) should have data from the user
-          this.navCtrl.push(ProfilePage, {});
+          this.navCtrl.push(ProfilePage, {
+              user: this.user,
+              token,
+          });
+
+          this.navigateToProfilePage()
         },
 
         error => {
