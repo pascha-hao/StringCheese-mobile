@@ -25,8 +25,7 @@ export class RegisterPage {
     }
     else {
       this.http
-        //.post("http://localhost:3000/register", {
-        .post(this.configService.getBaseUrl() + "register", {
+        .post(this.configService.getBaseUrl() + "/register", {
           firstname: this.user.firstname,
           lastname: this.user.lastname,
           email: this.user.email,

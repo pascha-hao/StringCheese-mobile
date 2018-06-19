@@ -6,6 +6,7 @@ import { DonationsPage } from '../donations/donations';
 import { EditPage } from '../edit/edit';
 import { User } from '../../models/user';
 import { Http } from '@angular/http';
+import { ConfigService } from '../../config.service';
 
 
 @Component({
@@ -17,11 +18,11 @@ export class ProfilePage {
   public user: User = new User();
   jwt: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private app: App, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private app: App, public http: Http, public configService: ConfigService) {
     this.jwt = localStorage.getItem('jwt')
   
     this.http
-      .get("http://localhost:3000/users", {
+      .get(this.configService.getBaseUrl() + "/users", {
         params: {
           jwt: this.jwt
         }

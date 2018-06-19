@@ -5,6 +5,7 @@ import { ProfilePage } from '../profile/profile';
 import { Charity } from '../../models/charityProfile';
 import { User } from '../../models/user';
 import { Http } from '@angular/http';
+import { ConfigService } from '../../config.service';
 
 /**
  * Generated class for the BrowsePage page.
@@ -24,10 +25,10 @@ import { Http } from '@angular/http';
   public charities: Array<Charity> = [];
   public user: User = new User();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public configService: ConfigService) {
     this.user = this.navParams.get("user");
     this.http
-    .get("http://localhost:3000/charities")
+    .get(this.configService.getBaseUrl() + "/charities")
     .subscribe(
       result => {
         let i=0;

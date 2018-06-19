@@ -6,7 +6,7 @@ import { Charity } from '../../models/charityProfile';
 import { BrowsePage } from '../browse/browse';
 import { StripeNativePage } from '../stripe-native/stripe-native';
 import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
- 
+import { ConfigService } from '../../config.service';
 import { Http } from "@angular/http";
 //import { DonationsPage } from '../donations/donations';
 //import { ProfilePage } from '../profile/profile';
@@ -29,12 +29,12 @@ export class PaymentPage {
   public payment: number;
   jwt: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public configService: ConfigService) {
     this.user = this.navParams.get("user");
     this.charity = this.navParams.get("charity");
     this.jwt = localStorage.getItem('jwt')
     this.http 
-    .get("http://localhost:3000/users", {
+    .get(this.configService.getBaseUrl() + "/users", {
       params: {
         jwt: this.jwt
       }

@@ -10,6 +10,6 @@ export class ConfigService{
      ){}
 
      getBaseUrl(){
-        return "https://string-cheese-api.herokuapp.com/"
+        return "https://string-cheese-api.herokuapp.com"
      }
 }
