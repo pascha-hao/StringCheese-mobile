@@ -22,6 +22,7 @@ export class HomePage {
   public jwt: string;
 
 
+
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
@@ -56,6 +57,7 @@ export class HomePage {
       this.navCtrl.push(TabsPage);
     }
     console.log(this.user);
-    this.authService.login(this.user.email, this.user.password, callback); 
+    this.authService.login(this.user.email, this.user.password, callback);
+  
   }
 }

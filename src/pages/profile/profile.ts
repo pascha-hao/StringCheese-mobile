@@ -37,6 +37,19 @@ export class ProfilePage {
         
       );
     }
+    // if (this.navParams.get('user')) {
+    //   let user = this.navParams.get('user');
+    // }
+
+  // navigateToHome() {
+  //   this.navCtrl.push(HomePage, {
+  //     user: this.user,
+  //   });
+  // }
+
+  navigateToHome() {
+    localStorage.clear();
+  }
 
   logOut() {
     localStorage.clear();
