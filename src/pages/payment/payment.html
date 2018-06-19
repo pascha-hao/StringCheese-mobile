@@ -20,7 +20,7 @@
         <ion-label fixed>$</ion-label>
         <ion-input type="number" [(ngModel)]="payment"></ion-input>
     </ion-item>
-    <ion-item-divider color="light">
+    <ion-item-divider color="light"></ion-item-divider>
     <ion-item>
         <ion-label fixed>Name: </ion-label>
         <ion-input type="String" ></ion-input>
@@ -49,10 +49,8 @@
       <div align="center">
           <button ion-button large round (click)="openJavaScript()">Donate here! </button>
         </div>
-
-       
-      
     </ion-item-divider>
+  </ion-item-group>
 
     <form action="your-server-side-code" method="POST">
         <script
@@ -65,8 +63,7 @@
           data-locale="auto">
         </script>
       </form>
-
-
+</ion-content>
   
 
 
