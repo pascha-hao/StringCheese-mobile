@@ -30,7 +30,7 @@ export class HomePage {
     private app: App
 
   ) {
-    if(localStorage.getItem("TOKEN")) {
+    if(localStorage.getItem("jwt")) {
       this.app.getRootNav().setRoot(TabsPage);
     }
   }

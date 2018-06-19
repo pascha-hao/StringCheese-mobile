@@ -19,7 +19,7 @@ export class AuthService {
                     var responseJson = result.json();
 
                     // store the token in local storage
-                    localStorage.setItem("TOKEN", responseJson.token);
+                    localStorage.setItem("jwt", responseJson.token);
 
                     callback();
                 },
