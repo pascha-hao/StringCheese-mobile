@@ -4,6 +4,7 @@ import { Http, Headers } from "@angular/http";
 
 import { HomePage } from '../home/home';
 import { User } from '../../models/user';
+import { ConfigService } from '../../config.service';
 
 
 @Component({
@@ -15,7 +16,7 @@ export class RegisterPage {
   public user: User = new User();
   public confirmed: string;
 
-  constructor(public navCtrl: NavController, public http: Http) {
+  constructor(public navCtrl: NavController, public http: Http, public configService: ConfigService) {
   }
 
   register() {
@@ -24,7 +25,8 @@ export class RegisterPage {
     }
     else {
       this.http
-        .post("http://localhost:3000/register", {
+        //.post("http://localhost:3000/register", {
+        .post(this.configService.getBaseUrl() + "register", {
           firstname: this.user.firstname,
           lastname: this.user.lastname,
           email: this.user.email,

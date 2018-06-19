@@ -19,6 +19,7 @@ import { AuthService } from '../auth.service';
 import { StripeJavaScriptPage } from '../pages/stripe-java-script/stripe-java-script';
 import { StripeNativePage } from '../pages/stripe-native/stripe-native';
 import { Stripe } from '@ionic-native/stripe';
+import { ConfigService } from '../config.service';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { Stripe } from '@ionic-native/stripe';
     SplashScreen,
     AuthService,
     Stripe,
+    ConfigService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

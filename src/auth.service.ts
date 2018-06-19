@@ -10,7 +10,7 @@ export class AuthService {
 
     login(email: string, password: string, callback: Function) {
         this.http
-            .post("http://localhost:3000/login", {
+            .post("https://string-cheese-api.herokuapp.com/login", {
                 email: email,
                 password: password
             })
