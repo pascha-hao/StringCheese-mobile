@@ -1,21 +1,27 @@
-page-donations {
+page-profile {
 
     .chart-wrapper {
-       width: 95%;
+       width: 85%;
        display: inline-block;
-       margin: 1em 1em;
-       padding-top: 0;
     }
  
  
     canvas  {
        height: 500px;
     }
- 
+
+    div {
+        background-color: inherit;
+        border: 0px;
+    }
+      
+      
     ion-card-content {
         background-color: white;
         border-radius: 10px 10px 10px 10px;
         border-top: 3px solid #eb3333;
         border-bottom: 3px solid #eb3333;
     }
+
+ 
  }

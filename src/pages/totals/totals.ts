@@ -14,15 +14,15 @@ import { Charity } from '../../models/charityProfile';
 import { ConfigService } from '../../config.service';
 import { Http } from '@angular/http';
 
-import { TotalsPage } from '../totals/totals';
+import { DonationsPage } from '../donations/donations';
 import { BreakdownPage } from '../breakdown/breakdown';
 
 @Component({
-  selector: 'page-donations',
-  templateUrl: 'donations.html'
+  selector: 'page-totals',
+  templateUrl: 'totals.html'
 })
 
-export class DonationsPage {
+export class TotalsPage {
 
   public user: User = new User();
   public technologies: Array<Slice> = [];
@@ -83,7 +83,7 @@ export class DonationsPage {
             
           this.defineChartData();
           //this.createPieChart();
-          //this.createBarChart();
+          this.createBarChart();
           //this.createLineChart();
 
           //let amounts = result.json()[0].amount;
@@ -96,7 +96,7 @@ export class DonationsPage {
 
   }
 
-  navHistoryPage() {
+  navTotalsPage() {
     this.navCtrl.setRoot(this.navCtrl.getActive().component);
   }
 
@@ -104,8 +104,8 @@ export class DonationsPage {
     this.navCtrl.push(BreakdownPage);
   }
 
-  navTotalsPage() {
-    this.navCtrl.push(TotalsPage);
+  navHistoryPage() {
+    this.navCtrl.push(DonationsPage);
   }
 
 

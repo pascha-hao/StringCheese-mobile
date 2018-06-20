@@ -1,38 +1,41 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Portfolio
-    </ion-title>
-  </ion-navbar>
+  <ion-title>
+    <div align="center">
+      <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> donation history </p>
+    </div>
+  </ion-title>
 </ion-header>
 
-<ion-content padding>
-
-  <ion-card>
-    <ion-card-content>
-      <ion-label>Your Donation History</ion-label>
-        <section class="chart-wrapper">
-            <canvas align="center" #pieChart></canvas>
-        </section>
-    </ion-card-content>
-  </ion-card>
-  
-  <button ion-button full clear small (click)="update()">
-      Update Chart
+<ion-fab left top>
+  <button ion-fab color="#eb3333">
+    <ion-icon name="arrow-dropright"></ion-icon>
   </button>
-  
-  <ion-list>
-    <ion-item>
-        Total Amount Donated: $300
-    </ion-item>
+  <ion-fab-list side="right">
+    <button ion-fab>
+      <ion-icon name="stats" (click)="navTotalsPage()"></ion-icon>
+    </button>
+    <button ion-fab>
+      <ion-icon name="pie" (click)="navBreakdownPage()"></ion-icon>
+    </button>
+    <button ion-fab>
+      <ion-icon name="list-box" (click)="navHistoryPage()"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>
 
-        <ion-item-divider color="dark">Donation History</ion-item-divider>
-        <ion-item>
-          $40 to Save the Toucans</ion-item>
-        <ion-item>
-          $100 to Paint the Beaks Fund</ion-item>
-          <ion-item>
-          $160 to Fruit Addiction Rehab</ion-item>
-  </ion-list>
+<ion-content padding style="background-color:whitesmoke">
+
+  <div>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let donation of donations">
+          <h2>
+            <b style="color: #eb3333">{{ donation.charity_name }}: </b> ${{ donation.amount }}
+          </h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </div>
+
 
 </ion-content>

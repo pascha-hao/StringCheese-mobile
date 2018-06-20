@@ -13,6 +13,8 @@ import { BrowsePage } from '../pages/browse/browse';
 import { CharityPage } from '../pages/charity/charity';
 import { DonationsPage } from '../pages/donations/donations';
 import { EditPage } from '../pages/edit/edit';
+import { BreakdownPage } from '../pages/breakdown/breakdown';
+import { TotalsPage } from '../pages/totals/totals';
 import { PaymentPage } from '../pages/payment/payment';
 import { TabsPage } from '../pages/tabs/tabs';
 import { AuthService } from '../auth.service';
@@ -33,6 +35,8 @@ import { ConfigService } from '../config.service';
     PaymentPage,
     DonationsPage,
     EditPage,
+    BreakdownPage,
+    TotalsPage,
     StripeJavaScriptPage,
     StripeNativePage
   ],
@@ -53,6 +57,8 @@ import { ConfigService } from '../config.service';
     PaymentPage,
     DonationsPage,
     EditPage,
+    BreakdownPage,
+    TotalsPage,
     StripeJavaScriptPage,
     StripeNativePage
 
