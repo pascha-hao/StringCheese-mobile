@@ -9,7 +9,9 @@ import { Chart } from '../../../node_modules/chart.js';
 import { MyCharity } from '../../models/myCharity';
 import { Slice } from '../../models/slice';
 import { User } from '../../models/user';
+import { Donation } from '../../models/donation';
 import { Charity } from '../../models/charityProfile';
+import { ConfigService } from '../../config.service';
 import { Http } from '@angular/http';
 
 
@@ -24,9 +26,45 @@ export class DonationsPage {
   public user: User = new User();
   public technologies: Array<Slice> = [];
   public amount: number = 0;
-  
+  public donations: Array<Donation> = [];
+  jwt: string;
+
   constructor(public navCtrl: NavController,
-    public navParams: NavParams) {
+    public navParams: NavParams, public http: Http, public configService: ConfigService) {
+      this.jwt = localStorage.getItem('jwt');
+      this.http
+      .get(this.configService.getBaseUrl() + "/donations", {
+        params: {
+          jwt: this.jwt
+        }
+      })
+      .subscribe(
+        result => {
+          this.donations = result.json();
+          //let amounts = result.json()[0].amount;
+        },
+        error => {
+          console.log(error);
+        }
+        
+      );
+
+      // .get("http://localhost:3000/donation", {
+      //   params: {
+      //     user_id: this.user.id
+      //   }
+      // })
+      // .subscribe(
+      //   result => {
+      //     let newUser = result.json().user;
+      //     this.user = newUser;
+      //   },
+      //   error => {
+      //     console.log(error);
+      //   }
+        
+      // );
+
     
     let colorArr: Array<string> = ["rgb(128,0,0)", "rgb(220,20,60)", "rgb(255,0,0)", "rgb(255,127,80)", "rgb(205,92,92)", "rgb(255,165,0)", "rgb(255,215,0)", "rgb(128,128,0)", "rgb(154,205,50)", "rgb(85,107,47)", "rgb(124,252,0)", "rgb(144,238,144)", "rgb(143,188,143)", "rgb(47,79,79)", "rgb(0,139,139)", "rgb(0,255,255)", "rgb(224,255,255)", "rgb(70,130,180)", "rgb(30,144,255)", "rgb(25,25,112)"];
 

@@ -4,6 +4,7 @@ import { NavController, NavParams } from 'ionic-angular';
 import { User } from '../../models/user';
 import { Charity } from '../../models/charityProfile';
 import { BrowsePage } from '../browse/browse';
+import { DonationsPage } from '../donations/donations';
 import { StripeNativePage } from '../stripe-native/stripe-native';
 import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
 import { ConfigService } from '../../config.service';
@@ -30,28 +31,37 @@ export class PaymentPage {
   jwt: string;
 
   constructor(
-    public navCtrl: NavController, 
-    public navParams: NavParams, 
-    public http: Http, 
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public http: Http,
     public configService: ConfigService) {
     this.user = this.navParams.get("user");
     this.charity = this.navParams.get("charity");
     this.jwt = localStorage.getItem('jwt')
-    this.http 
-    .get(this.configService.getBaseUrl() + "/users", {
-      params: {
-        jwt: this.jwt
-      }
-    })
-      // .post('/donations'), {
-      //     amount: this.payment,
-      //     date: this.
-      // }
+
+    this.http
+      .get(this.configService.getBaseUrl() + "/users", {
+        params: {
+          jwt: this.jwt
+        }
+      })
+      .subscribe(
+        result => {
+          let newUser = result.json().user;
+          this.user = newUser;
+        },
+        error => {
+          console.log(error);
+        }
+
+      );
   }
-  openJavaScript(){
+
+
+  openJavaScript() {
     this.navCtrl.push(StripeJavaScriptPage)
   }
-  openNative(){
+  openNative() {
     this.navCtrl.push(StripeNativePage)
   }
 
@@ -59,7 +69,7 @@ export class PaymentPage {
   //   var val = localStorage.getItem('jwt');
   //   this.jwt = val;
 
-    
+
 
 
   // }
@@ -77,4 +87,33 @@ export class PaymentPage {
     });
   }
 
+  navigateToPortfolio() {
+    console.log(this.charity.id);
+    console.log(this.user.id);
+    this.http
+      .post(this.configService.getBaseUrl() + "/donation", {
+        charity_id: this.charity.id,
+        user_id: this.user.id,
+        amount: this.payment,
+        charity_name: this.charity.name,
+        //donate_date: Date.now()
+      })
+      .subscribe(
+        result => {
+          console.log("whats going on")
+          this.navCtrl.push(DonationsPage, {
+              user: this.user
+          });
+        },
+
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
 }
+
+
+
+
