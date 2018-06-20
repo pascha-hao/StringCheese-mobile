@@ -7,44 +7,57 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title><h1>{{charity.name}}</h1></ion-title>
+    <ion-title>
+      <div align="center">
+        <!-- <img src="https://static1.squarespace.com/static/530fd993e4b013842a38f1fd/t/53633a4ae4b0e2e552373eb5/1399011915390/fdgfdgdfgfd.png?format=300w" alt="logo"/> -->
+        <h1 style="font-family: Poppins; font-size: 15px; color: #eb3333"> {{charity.name}} </h1>
+      </div>
+    </ion-title>
   </ion-navbar>
 
 </ion-header>
 
+<ion-content padding style="background-color:whitesmoke">
 
-<ion-content padding>
-    <div align = "center">
-        <ion-img width="200" height="150" src="{{charity.photo}}"></ion-img>
-      </div>
-  <ion-item-group>
-    <ion-item-divider color="danger"><font size="5">Description</font></ion-item-divider>
-    <font size="5"><p padding-right="10" padding-left="10">{{charity.slogan}}</p></font><hr>
-    <ion-item-divider color="danger"><font size="5">Our Mission</font></ion-item-divider>
-    <font size="4"><p padding-right="10" padding-left="10">{{charity.about}}</p></font><hr>
-    <ion-item-divider color="danger"><font size="5">Total Donated to {{charity.name}}</font></ion-item-divider>
-    <font size="5"><p padding-right="10" padding-left="10">$###.##</p></font><hr>
-    <ion-item-divider color="danger"><font size="5">Contact Us</font></ion-item-divider>
-    <button ion-button full clear small>
-      Website
+  <div align="center">
+    <ion-img width="200" height="150" src="{{charity.charitycardimg}}"></ion-img>
+  </div>
+  <br>
+  <div>
+    <ion-card-content>
+      <ion-card-header align="center" color="charity">
+        <font style="font-family: Poppins" size="4">
+          <b>Our Mission</b>
+        </font>
+      </ion-card-header>
+      <font style="font-family: Poppins; color: #626262" size="3.5">
+        <p padding-right="5" padding-left="5">{{charity.description}}</p>
+      </font>
+    </ion-card-content>
+  </div>
+  <br>
+  <div>
+    <ion-card-content>
+      <ion-card-header align="center" padding-top="2" padding-bottom="2" color="charity">
+        <font style="font-family: Poppins" size="4">
+          <b>Contact Us</b>
+        </font>
+      </ion-card-header>
+      <font style="font-family: Poppins; color:#626262" size="3.5">
+        <p padding-right="5" padding-left="5">
+          <a href="{{charity.website}}"></a>{{charity.website}}</p>
+      </font>
+    </ion-card-content>
+  </div>
+  <br>
+  <div align="center">
+    <button ion-button round outline small color="danger" (click)="navigateToPayment()" icon-start>
+      <font style="font-family: Poppins">Donate Now!&ensp;</font>
+      <ion-icon name="arrow-forward"></ion-icon>
     </button>
-    <hr>
-    <button ion-button full clear small>
-      Facbook
-    </button>
-    <hr>
-    <button ion-button full clear small>
-      Twitter
-    </button>
-    <ion-item-divider color="danger">
-      <button ion-button full clear small (click)="navigateToDonations()">
-          <font color="white" size="5">Add to Portfolio</font>
-      </button>
-    </ion-item-divider>
-    <ion-item-divider color="danger">
-        <button ion-button full clear small (click)="navigateToPayment()">
-            <font color="white" size="5">Donate Now!</font>
-        </button>
-      </ion-item-divider>
-  </ion-item-group>
+  </div>
+
+
+
+
 </ion-content>
