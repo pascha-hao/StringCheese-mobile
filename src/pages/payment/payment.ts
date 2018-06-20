@@ -29,7 +29,11 @@ export class PaymentPage {
   public payment: number;
   jwt: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public configService: ConfigService) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public http: Http, 
+    public configService: ConfigService) {
     this.user = this.navParams.get("user");
     this.charity = this.navParams.get("charity");
     this.jwt = localStorage.getItem('jwt')

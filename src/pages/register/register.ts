@@ -16,7 +16,10 @@ export class RegisterPage {
   public user: User = new User();
   public confirmed: string;
 
-  constructor(public navCtrl: NavController, public http: Http, public configService: ConfigService) {
+  constructor(
+    public navCtrl: NavController, 
+    public http: Http, 
+    public configService: ConfigService) {
   }
 
   register() {
@@ -35,18 +38,16 @@ export class RegisterPage {
           result => {
             let token = result.json().token;
             console.log(token)
+            localStorage.setItem("jwt", token);
             // Our username and password (on this) should have data from the user
             this.navCtrl.setRoot(HomePage, {
               user: this.user,
               token,
             });
-  
           },
-
           error => {
             console.log(error);
-          }
-      
+          }      
       );
   }
 }

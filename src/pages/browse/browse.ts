@@ -25,7 +25,11 @@ import { ConfigService } from '../../config.service';
   public charities: Array<Charity> = [];
   public user: User = new User();
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public http: Http, public configService: ConfigService) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams, 
+    public http: Http, 
+    public configService: ConfigService) {
     this.user = this.navParams.get("user");
     this.http
     .get(this.configService.getBaseUrl() + "/charities")
