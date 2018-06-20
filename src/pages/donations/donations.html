@@ -27,12 +27,9 @@
     </ion-item>
 
         <ion-item-divider color="dark">Donation History</ion-item-divider>
-        <ion-item>
-          $40 to Save the Toucans</ion-item>
-        <ion-item>
-          $100 to Paint the Beaks Fund</ion-item>
-          <ion-item>
-          $160 to Fruit Addiction Rehab</ion-item>
+        <ion-item *ngFor="let donation of donations">
+            <h2>Donated <b>${{ donation.amount }}</b> to <b>{{ donation.charity_name }}</b></h2>
+          </ion-item>
   </ion-list>
 
 </ion-content>
