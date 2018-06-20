@@ -7,6 +7,10 @@
   </ion-header>
   
   <ion-content padding>
+
+    <section class="chart-wrapper">
+        <canvas #barChart></canvas>
+      </section>
   
     <ion-card>
       <ion-card-content>
@@ -23,7 +27,7 @@
     
     <ion-list>
       <ion-item>
-          Total Amount Donated: $300
+          Total Amount Donated: ${{ total }}
       </ion-item>
   
           <ion-item-divider color="dark">Donation History</ion-item-divider>
