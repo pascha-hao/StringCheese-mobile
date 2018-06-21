@@ -1,48 +1,52 @@
-<ion-content padding style="background-color: white">
-
-    <ion-header>
-        <ion-navbar>
-          <ion-title>
-            <div align="center"><b><p style="font-family: Poppins; font-size: 25px; color: #eb3333"> toucan donate </p></b></div>
-          </ion-title>
-        </ion-navbar>
-      </ion-header>
-  <div>
-    <ion-header>
-    </ion-header>
-  </div>
-  <br>
-  <br><br>
-  <br><br>
-  <br>
-  
-  <div>
-    <div align="right" (click)="navigateToEdit()">
-      Edit&nbsp;
-      <ion-icon name="create"></ion-icon>
-    </div>
+<ion-header>
+  <ion-title>
     <div align="center">
-      <h1>
-        <b>{{user.firstname}} {{user.lastname}}</b>
-      </h1>
-      <ion-img width="140" height="150" src="https://i.pinimg.com/236x/e6/2e/5e/e62e5e1468ce5cb05fcee3bac8788730--toucan-black-and-white.jpg"></ion-img>
-      <button ion-button full clear small (click)="logOut()">
-          Log Out
-      </button>
+      <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> profile </p>
     </div>
+  </ion-title>
+</ion-header>
+
+<ion-fab left top>
+  <button ion-fab color="#eb3333">
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </button>
+  <ion-fab-list side="right">
+    <button ion-fab>
+      <ion-icon name="create" (click)="navigateToEdit()"></ion-icon>
+    </button>
+    <button ion-fab>
+      <ion-icon name="log-out" (click)="logOut()"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>
+
+<ion-content padding style="background-color:whitesmoke">
+
+  <div>
+
+
+    <ion-card-content>
+      <div align="center">
+        <ion-img width="140" height="150" src="https://i.pinimg.com/236x/e6/2e/5e/e62e5e1468ce5cb05fcee3bac8788730--toucan-black-and-white.jpg"></ion-img>
+        <h1>
+          <b style="font-family: Poppins; color: #eb3333">{{user.firstname}} {{user.lastname}}</b>
+        </h1>
+        <label>
+            <b style="font-family: Poppins; font-size: 14px; color: #eb3333">{{this.mem_status}}</b>
+        </label>
+      </div>
+      <br>
+      <br>
+      <ion-list>
+        <ion-item-divider style="font-family: Poppins; font-size: 18px; color: #eb3333">
+          <b>Personal Information:</b>
+        </ion-item-divider>
+        <ion-item>
+          <b>Email: </b>{{user.email}}
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
   </div>
-  <br>
-  <hr>
 
-  <ion-item-group>
-    <ion-item-divider color="danger">Preferences</ion-item-divider>
-    <ion-item>Email: {{user.email}}</ion-item>
-    <ion-item-divider color="danger">Billing Information</ion-item-divider>
-    <ion-item>Billing Address: </ion-item>
-    <ion-item>Credit Card Number: </ion-item>
-    <ion-item-divider color="danger">Statistics</ion-item-divider>
-    <ion-item>Total Donated:</ion-item>
-    <ion-item>Top Charity:</ion-item>
-
-  </ion-item-group>
+  
 </ion-content>
