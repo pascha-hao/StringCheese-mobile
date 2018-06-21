@@ -4,4 +4,19 @@ page-browse {
         text-align: center;
         padding: 10px;
     }
+
+    ion-searchbar{        
+        .searchbar-input-container{            
+            .searchbar-input{
+                border-radius: 30px;
+            }
+        }
+     }
+
+     .searchbar-search-icon {
+        background-image: url("https://cdn.dribbble.com/users/1237127/screenshots/2787572/untitled-1.gif")!important;
+      }
+
+
+
 }
