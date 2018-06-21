@@ -1,36 +1,53 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>
-        Portfolio
-      </ion-title>
-    </ion-navbar>
+    <ion-title>
+      <div align="center">
+        <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> portfolio breakdown </p>
+      </div>
+    </ion-title>
   </ion-header>
 
   <ion-fab left top>
-      <button ion-fab color="dark"><ion-icon name="arrow-dropright"></ion-icon></button>
+      <button ion-fab color="#eb3333">
+        <ion-icon name="arrow-dropright"></ion-icon>
+      </button>
       <ion-fab-list side="right">
-        <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-        <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
-        <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-        <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
+        <button ion-fab>
+          <ion-icon name="stats" (click)="navTotalsPage()"></ion-icon>
+        </button>
+        <button ion-fab>
+          <ion-icon name="pie" (click)="navBreakdownPage()"></ion-icon>
+        </button>
+        <button ion-fab>
+          <ion-icon name="list-box" (click)="navHistoryPage()"></ion-icon>
+        </button>
       </ion-fab-list>
-  </ion-fab>
+    </ion-fab>
   
-  <ion-content padding>
+    <ion-content padding style="background-color:whitesmoke">
 
-    <ion-card>
-      <ion-card-content>
-        <ion-label>Your Donation History</ion-label>
-          <section class="chart-wrapper">
-              <canvas align="center" #pieChart></canvas>
-          </section>
-      </ion-card-content>
-    </ion-card>
-    
-    <button ion-button full clear small (click)="update()">
-        Update Chart
-    </button>
-
-  
-  </ion-content>
+        <div>
+          
+      
+          <ion-card-content>
+              <div class="chart-wrapper" align="center">
+                  <canvas #pieChart></canvas>
+              </div>
+          </ion-card-content>
+          <br>
+          <ion-card-content>
+              <ion-list>
+                  <ion-item-divider style="font-family: Poppins; font-size: 18px; color: #eb3333"><b>Total Monthly Donation:</b></ion-item-divider>
+                  <ion-item>
+                    <b>${{ total }}</b>
+                  </ion-item>
+                  <ion-item-divider style="font-family: Poppins; font-size: 18px; color: #eb3333"><b>Total Monthly Donation Per Charity:</b></ion-item-divider>
+                  <ion-item *ngFor="let total of totals">
+                      <h2><b>{{ total.charity_name }}</b>: ${{ total.amount }}</h2>
+                  </ion-item>
+              </ion-list>
+          </ion-card-content>
+        </div>
+      
+      
+      </ion-content>
   

@@ -14,7 +14,8 @@ import { Charity } from '../../models/charityProfile';
 import { ConfigService } from '../../config.service';
 import { Http } from '@angular/http';
 
-
+import { DonationsPage } from '../donations/donations';
+import { TotalsPage } from '../totals/totals';
 
 @Component({
   selector: 'page-breakdown',
@@ -93,55 +94,18 @@ export class BreakdownPage {
 
       );
 
-    // .get("http://localhost:3000/donation", {
-    //   params: {
-    //     user_id: this.user.id
-    //   }
-    // })
-    // .subscribe(
-    //   result => {
-    //     let newUser = result.json().user;
-    //     this.user = newUser;
-    //   },
-    //   error => {
-    //     console.log(error);
-    //   }
+  }
 
-    // );
+  navBreakdownPage() {
+    this.navCtrl.setRoot(this.navCtrl.getActive().component);
+  }
 
+  navTotalsPage() {
+    this.navCtrl.push(TotalsPage);
+  }
 
-    // this.max = this.totals[0].amount;
-
-    // for (var x = 0; x < this.totals.length; x++){
-    //   let newSlice = new Slice();
-    //   newSlice.technology = this.totals[x].charity_name;
-    //   if (this.totals[x].amount > this.max){
-    //     this.max = this.totals[x].amount;
-    //   }
-    //   newSlice.time = this.totals[x].amount;
-    //   newSlice.color = colorArr[x];
-    //   this.technologies.push(newSlice);
-    // }
-
-
-    // let newSlice = new Slice();
-    // newSlice.technology = "Save the Toucans";
-    // newSlice.time = 40;
-    // newSlice.color = colorArr[0];
-    // this.technologies.push(newSlice);
-
-    // let newSlice1 = new Slice();
-    // newSlice1.technology = "Paint the Beaks Fund";
-    // newSlice1.time = 100;
-    // newSlice1.color = colorArr[5];
-    // this.technologies.push(newSlice1);
-
-    // let newSlice2 = new Slice();
-    // newSlice2.technology = "Fruit Addiction Rehab";
-    // newSlice2.time = 160;
-    // newSlice2.color = colorArr[15];
-    // this.technologies.push(newSlice2);
-
+  navHistoryPage() {
+    this.navCtrl.push(DonationsPage);
   }
 
 
@@ -262,7 +226,7 @@ export class BreakdownPage {
             yAxes: [{
               ticks: {
                 beginAtZero: true,
-                stepSize: 500,
+                stepSize: this.max/10,
                 max: this.max
               }
             }],
