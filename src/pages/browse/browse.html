@@ -24,9 +24,9 @@
       <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> browse </p>
     </div>
   </ion-title>
-  <ion-searchbar style="font-family: Poppins"[(ngModel)]="searchText" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+  <ion-searchbar style="font-family: Poppins" [(ngModel)]="searchText" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
   <div *ngIf="searching" class="spinner-container">
-      <ion-spinner name="bubbles"></ion-spinner>
+    <ion-spinner name="bubbles"></ion-spinner>
   </div>
 </ion-header>
 
@@ -37,10 +37,10 @@
         <img src="{{charity.charitycardimg}}" />
         <ion-card-content>
           <ion-card-title>
-            {{ charity.name }}
+            <font style="font-family: Poppins">{{ charity.name }}</font>
           </ion-card-title>
           <p>
-            {{ charity.logo }}
+            <font style="font-family: Poppins"> {{ charity.logo }}</font>
           </p>
         </ion-card-content>
         <ion-row no-padding>
