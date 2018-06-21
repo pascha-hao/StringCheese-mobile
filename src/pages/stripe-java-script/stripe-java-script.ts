@@ -1,11 +1,23 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, LoadingController, AlertController, ToastController } from 'ionic-angular';
-import { CharityPage } from '../charity/charity';
-import { Charity } from '../../models/charityProfile';
-import { MyCharity } from '../../models/myCharity';
+
 import { User } from '../../models/user';
-import { Http } from '@angular/http';
+import { Charity } from '../../models/charityProfile';
+import { BrowsePage } from '../browse/browse';
+import { DonationsPage } from '../donations/donations';
+import { TotalsPage } from '../totals/totals';
+import { BreakdownPage } from '../breakdown/breakdown';
+import { StripeNativePage } from '../stripe-native/stripe-native';
+//import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
 import { ConfigService } from '../../config.service';
+import { Http } from "@angular/http";
+
+import { CharityPage } from '../charity/charity';
+//import { Charity } from '../../models/charityProfile';
+import { MyCharity } from '../../models/myCharity';
+//import { User } from '../../models/user';
+//import { Http } from '@angular/http';
+//import { ConfigService } from '../../config.service';
 declare var Stripe;
 
 @Component({
@@ -23,6 +35,10 @@ export class StripeJavaScriptPage {
   oneTime: boolean;
   monthly: boolean;
 
+  public user: User = new User();
+  public charity: Charity = new Charity();
+  jwt: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public loadingCtrl: LoadingController,
     public alertCtrl: AlertController, public toastCtrl: ToastController, private http: Http, public configService: ConfigService) {
     // var newDonation = new MyCharity();
@@ -30,6 +46,28 @@ export class StripeJavaScriptPage {
     // this.charity = this.navParams.get('charity');
     // this.charity = new Charity;
     // this.user = new User();
+
+    this.user = this.navParams.get("user");
+    this.charity = this.navParams.get("charity");
+    this.jwt = localStorage.getItem('jwt')
+
+    this.http
+      .get(this.configService.getBaseUrl() + "/users", {
+        params: {
+          jwt: this.jwt
+        }
+      })
+      .subscribe(
+        result => {
+          let newUser = result.json().user;
+          this.user = newUser;
+        },
+        error => {
+          console.log(error);
+        }
+
+      );
+  
   }
   ionViewDidLoad() {
     this.setupStripe();
@@ -112,7 +150,7 @@ export class StripeJavaScriptPage {
 
   stripeTokenHandler(token) {
     this.http
-      .post(this.configService.getBaseUrl() + "/payment?jwt=" + localStorage.getItem("Token"), {
+      .post(this.configService.getBaseUrl() + "/payment?jwt=" + this.jwt, {
         cardholder: this.name,
         paymenttoken: token.id,
         amount: this.amount,
@@ -133,7 +171,7 @@ export class StripeJavaScriptPage {
 
   stripeSourceHandler(source) {
     this.http
-      .post(this.configService.getBaseUrl() + "/payment?jwt=" + localStorage.getItem("Token"), {
+      .post(this.configService.getBaseUrl() + "/payment?jwt=" + this.jwt, {
         cardholder: this.name,
         paymenttoken: source.id,
         amount: this.amount,
@@ -158,5 +196,31 @@ export class StripeJavaScriptPage {
     });
     console.log('Donate clicked');
     toast.present();
+    this.navigateToPortfolio();
+  }
+
+  navigateToPortfolio() {
+    console.log(this.charity.id);
+    console.log(this.user.id);
+    this.http
+      .post(this.configService.getBaseUrl() + "/donation", {
+        charity_id: this.charity.id,
+        user_id: this.user.id,
+        amount: this.amount,
+        charity_name: this.charity.name,
+        //donate_date: Date.now()
+      })
+      .subscribe(
+        result => {
+          console.log("whats going on")
+          this.navCtrl.push(TotalsPage, {
+              user: this.user
+          });
+        },
+
+        error => {
+          console.log(error);
+        }
+      );
   }
 }

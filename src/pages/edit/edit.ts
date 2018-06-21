@@ -6,6 +6,7 @@ import { Http } from "@angular/http";
 import { HomePage } from '../home/home';
 import { ProfilePage } from '../profile/profile';
 import { User } from '../../models/user';
+import { ConfigService } from '../../config.service';
 
 
 //import { AuthService } from '../../auth.service'
@@ -21,11 +22,15 @@ import { User } from '../../models/user';
   selector: 'page-edit',
   templateUrl: 'edit.html',
 })
+
 export class EditPage {
 
-  public user: User = new User();
+  jwt : string = localStorage.getItem('jwt')
 
-  constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams) {
+  public user: User = new User();
+  //this.jwt = localStorage.getItem('jwt')
+
+  constructor(public navCtrl: NavController, public http: Http, public navParams: NavParams, public configService: ConfigService) {
     this.user = this.navParams.get("user");
   }
 
@@ -40,8 +45,9 @@ export class EditPage {
   }
 
   edit() {
+    console.log(this.jwt);
     this.http
-      .post("http://localhost:3000/edit", {
+      .post(this.configService.getBaseUrl() + "/edit?jwt=" + this.jwt, {
         firstname: this.user.firstname,
         lastname: this.user.lastname,
         email: this.user.email,
@@ -50,14 +56,15 @@ export class EditPage {
       .subscribe(
         result => {
           let token = result.json().token;
+          localStorage.setItem('jwt', token);
           console.log(token)
           // Our username and password (on this) should have data from the user
-          this.navCtrl.parent.select(4)
+          //this.navCtrl.parent.select(4)
           // (ProfilePage, {
           //     user: this.user,
           //     token,
           // });
-
+          this.navCtrl.pop();
     
         },
 

@@ -5,6 +5,7 @@ import { User } from '../../models/user';
 import { Charity } from '../../models/charityProfile';
 import { DonationsPage } from '../donations/donations';
 import { PaymentPage } from '../payment/payment';
+import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
 
 /**
  * Generated class for the CharityPage page.
@@ -48,7 +49,7 @@ export class CharityPage {
   }
 
   navigateToPayment() {
-    this.navCtrl.push(PaymentPage, {
+    this.navCtrl.push(StripeJavaScriptPage, {
       user: this.user,
       charity: this.charity,
     });
