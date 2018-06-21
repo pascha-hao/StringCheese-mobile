@@ -1,26 +1,106 @@
+<!--
+  Generated template for the StripeJavaScriptPage page.
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
 <ion-header>
-  <ion-navbar>
-      <ion-title>JavaScript</ion-title>
+
+    <ion-navbar color="main">
+  
+      <ion-title>Payment</ion-title>
+  
     </ion-navbar>
-   
+  
   </ion-header>
-   
-   
-  <ion-content>
-   
+  
+  <ion-content padding>
+  
+    <!-- Payment amount -->
+    <!-- <ion-list>
+      <ion-list-header>Donation Amount</ion-list-header>
+      <ion-item>
+        <ion-label>$</ion-label>  
+        <ion-input [(ngModel)]="amount" type="number"></ion-input>
+      </ion-item>
+    </ion-list> -->
+  
+    <ion-list>
+      <ion-item>
+        <ion-label> Amount</ion-label>
+        <ion-input placeholder="$" type="usd" [(ngModel)]="amount"></ion-input>
+      </ion-item>
+    </ion-list>
+  
+    <!-- Payment plan -->
+    <ion-list radio-group>
+      <ion-list-header>
+        Payment Plan
+      </ion-list-header>
+      <ion-item>
+        <ion-label>One-Time</ion-label>
+        <ion-radio value="oneTime" (click)="oneTimeTrue()"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Monthly</ion-label>
+        <ion-radio value="monthly" checked (click)="monthlyTrue()"></ion-radio>
+      </ion-item>
+  
+    </ion-list>
+  
+    <!-- Payment input -->
+   
+      <ion-list-header>
+        Card Information
+      </ion-list-header>
+  
+      <form action="your-server-side-code" method="POST">
+        <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_test_Wr8cGPVS6aiNLEsuYVi0G1wm" data-amount="999"
+          data-name="Demo Site" data-description="Example charge" data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+          data-locale="auto" data-zip-code="true">
+          </script>
+      </form>
+  
+      <ion-item>
+        <ion-label stacked>Card Holder Name</ion-label>
+        <ion-input type="text" placeholder="Firstname Lastname" [(ngModel)]="name"></ion-input>
+      </ion-item>
+  
+      <ion-list>
+          <ion-item>
+            <ion-label stacked>Currency</ion-label>
+            <ion-select [(ngModel)]="curency">
+              <ion-option value="usd">USD</ion-option>
+              <ion-option value="cad">CAD</ion-option>
+              <ion-option value="gbp">GBP</ion-option>
+              <ion-option value="eur">EUR</ion-option>
+            </ion-select>
+          </ion-item>
+        </ion-list>
+   
       <form action="/" method="post" id="payment-form">
-      
+  
         <div class="form-row">
           <div id="card-element">
             <!-- a Stripe Element will be inserted here. -->
           </div>
-    
+  
           <!-- Used to display Element errors -->
           <div id="card-errors" role="alert"></div>
         </div>
-    
-      <button ion-button block large>Add Card</button>
-        
+  
+        <button ion-button class="key">Donate ${{amount}}</button>
+  
       </form>
-   
+  
+      <!-- <button ion-button block large type="submit">submit</button> -->
+  
+      <!-- <button ion-button block large type="button" (click)="confirmDonate()">Donate</button> -->
+      <!--button ion-button clear type="submit" class="add"> 
+      <ion-icon name="md-add"></ion-icon>
+         Add Card
+    </button-->
+      <!--div class="move">
+          <button ion-button center full padding class="key">Donate ${{amount}}</button-->
+      <!-- <button ion-button type="button" (click)="confirmDonate()" class="key">Donate ${{amount}}</button> -->
   </ion-content>
+  
