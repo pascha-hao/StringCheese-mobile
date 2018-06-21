@@ -26,7 +26,6 @@ export class CharityPage {
     public charity: Charity = new Charity();
     public projects: Array<Project> = [];
     public charProjects: Array <Project> = [];
-    public projectsExist: boolean;
 
     constructor(
       public navCtrl: NavController, 
@@ -50,15 +49,6 @@ export class CharityPage {
                 this.charProjects.push(this.projects[j]);
               }
             }
-            if(this.charProjects.length > 0){
-              var exist = true;
-            }
-            else {
-              var exist = false;
-            }
-            // if(!exist) {
-
-            // }
           }, 
           error => {
             console.log(error);
