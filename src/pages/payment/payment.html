@@ -1,70 +1,59 @@
 <!--
-  Generated template for the PaymentPage page.
+  Generated template for the BrowsePage page.
 
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
--->
-<ion-header>
 
+<ion-header>
   <ion-navbar>
-    <ion-title>Donate Now!</ion-title>
+    <ion-title *ngIf="!isSearchbarOpened">
+    </ion-title>
+    <ion-searchbar *ngIf="isSearchbarOpened"> </ion-searchbar>
+    <ion-buttons end>
+      <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true"></button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
 
+-->
 
-<ion-content padding>
-  <ion-item-group>
-    <ion-item-divider color="light"><font size="5" style="font-family: Poppins; color: #eb3333">Amount to donate:</font></ion-item-divider>
-    <ion-item>
-        <ion-label fixed>$</ion-label>
-        <ion-input type="number" [(ngModel)]="payment"></ion-input>
-    </ion-item>
-    <ion-item-divider color="light"></ion-item-divider>
-    <ion-item>
-        <ion-label fixed>Name: </ion-label>
-        <ion-input type="String" ></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label fixed>Address: </ion-label>
-        <ion-input type="String"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label fixed>CC Num: </ion-label>
-        <ion-input type="String" ></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label fixed>Exp: </ion-label>
-        <ion-input type="String"></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label fixed>CVC: </ion-label>
-        <ion-input type="String"></ion-input>
-    </ion-item>
-    <ion-item-divider color="secondary">
-      <button ion-button full clear small (click)="navigateToPortfolio()">
-          <font color="black" size="5">Donate!</font>
-      </button>
-
+<ion-header>
+    <ion-title>
       <div align="center">
-          <button ion-button large round (click)="openJavaScript()">Donate here! </button>
-        </div>
-    </ion-item-divider>
-  </ion-item-group>
-
-    <form action="your-server-side-code" method="POST">
-        <script
-          src="https://checkout.stripe.com/checkout.js" class="stripe-button"
-          data-key="pk_test_Wr8cGPVS6aiNLEsuYVi0G1wm"
-          data-amount="999"
-          data-name="Demo Site"
-          data-description="Example charge"
-          data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
-          data-locale="auto">
-        </script>
-      </form>
-</ion-content>
+        <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> favorited charities </p>
+      </div>
+    </ion-title>
+    <ion-searchbar style="font-family: Poppins"[(ngModel)]="searchText" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+    <div *ngIf="searching" class="spinner-container">
+        <ion-spinner name="bubbles"></ion-spinner>
+    </div>
+  </ion-header>
   
-
-
-
+  <ion-content padding style="background-color: #EEEEEE">
+    <ion-list>
+      <ion-item *ngFor="let charity of charities">
+        <ion-card (click)="navigateToCharity(charity)">
+          <img src="{{charity.charitycardimg}}" />
+          <ion-card-content>
+            <ion-card-title>
+              {{ charity.name }}
+            </ion-card-title>
+            <p>
+              {{ charity.logo }}
+            </p>
+          </ion-card-content>
+        </ion-card>
+      </ion-item>
+  
+  
+    </ion-list>
+    <br>
+    <br>
+    <br>
+    <br>
+    <div align="center">
+      <ion-img width="300" height="300" src="http://bestdayevereducation.com/uploads/images/Gifs/No-Background/Tucan.gif"></ion-img>
+    </div>
+  
+  </ion-content>
