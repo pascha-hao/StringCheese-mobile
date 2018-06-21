@@ -52,16 +52,8 @@ export class BrowsePage {
           console.log(error);
         }
       );
-
-
   }
 
-  // search() {
-  //   this.charityService.getFilteredCharites(this.searchText)
-  //     .subscribe(filteredCharities => {
-  //       this.charities = filteredCharities;
-  //     });
-  // }
 
   ionViewDidLoad() {
     this.setFilteredCharities();
