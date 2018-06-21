@@ -17,11 +17,11 @@ import { Http } from '@angular/http';
 
 
 @Component({
-  selector: 'page-donations',
-  templateUrl: 'donations.html'
+  selector: 'page-breakdown',
+  templateUrl: 'breakdown.html'
 })
 
-export class DonationsPage {
+export class BreakdownPage {
 
   public user: User = new User();
   public technologies: Array<Slice> = [];
@@ -81,9 +81,9 @@ export class DonationsPage {
           }
             
           this.defineChartData();
-          // this.createPieChart();
-          // this.createBarChart();
-          // this.createLineChart();
+          this.createPieChart();
+          //this.createBarChart();
+          //this.createLineChart();
 
           //let amounts = result.json()[0].amount;
         },

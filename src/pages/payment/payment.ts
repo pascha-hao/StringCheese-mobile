@@ -5,6 +5,8 @@ import { User } from '../../models/user';
 import { Charity } from '../../models/charityProfile';
 import { BrowsePage } from '../browse/browse';
 import { DonationsPage } from '../donations/donations';
+import { TotalsPage } from '../totals/totals';
+import { BreakdownPage } from '../breakdown/breakdown';
 import { StripeNativePage } from '../stripe-native/stripe-native';
 import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
 import { ConfigService } from '../../config.service';
@@ -91,7 +93,7 @@ export class PaymentPage {
     console.log(this.charity.id);
     console.log(this.user.id);
     this.http
-      .post(this.configService.getBaseUrl() + "/donation", {
+      .post(this.configService.getBaseUrl() + "/totals", {
         charity_id: this.charity.id,
         user_id: this.user.id,
         amount: this.payment,
@@ -101,7 +103,7 @@ export class PaymentPage {
       .subscribe(
         result => {
           console.log("whats going on")
-          this.navCtrl.push(DonationsPage, {
+          this.navCtrl.push(TotalsPage, {
               user: this.user
           });
         },

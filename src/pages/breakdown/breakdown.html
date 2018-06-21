@@ -18,16 +18,19 @@
   
   <ion-content padding>
 
-    <ion-list>
-      <ion-item>
-          Total Amount Donated: ${{ total }}
-      </ion-item>
-  
-          <ion-item-divider color="dark">Donation History</ion-item-divider>
-          <ion-item *ngFor="let donation of donations">
-              <h2>Donated <b>${{ donation.amount }}</b> to <b>{{ donation.charity_name }}</b></h2>
-            </ion-item>
-    </ion-list>
+    <ion-card>
+      <ion-card-content>
+        <ion-label>Your Donation History</ion-label>
+          <section class="chart-wrapper">
+              <canvas align="center" #pieChart></canvas>
+          </section>
+      </ion-card-content>
+    </ion-card>
+    
+    <button ion-button full clear small (click)="update()">
+        Update Chart
+    </button>
+
   
   </ion-content>
   
