@@ -24,9 +24,11 @@
       <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> browse </p>
     </div>
   </ion-title>
+  <ion-searchbar style="font-family: Poppins"[(ngModel)]="searchText" [formControl]="searchControl" (ionInput)="onSearchInput()"></ion-searchbar>
+  <div *ngIf="searching" class="spinner-container">
+      <ion-spinner name="bubbles"></ion-spinner>
+  </div>
 </ion-header>
-
-
 
 <ion-content padding style="background-color: #EEEEEE">
   <ion-list>

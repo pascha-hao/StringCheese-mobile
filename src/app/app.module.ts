@@ -22,6 +22,7 @@ import { StripeJavaScriptPage } from '../pages/stripe-java-script/stripe-java-sc
 import { StripeNativePage } from '../pages/stripe-native/stripe-native';
 import { Stripe } from '@ionic-native/stripe';
 import { ConfigService } from '../config.service';
+import { CharityServiceProvider } from '../charity.service';
 
 @NgModule({
   declarations: [
@@ -69,6 +70,7 @@ import { ConfigService } from '../config.service';
     AuthService,
     Stripe,
     ConfigService,
+    CharityServiceProvider,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
