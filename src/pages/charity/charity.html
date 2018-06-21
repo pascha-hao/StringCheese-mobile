@@ -23,6 +23,7 @@
       <ion-img width="200" height="150" src="{{charity.charitycardimg}}"></ion-img><br>
       <button ion-button round (click)="favorite()"><ion-icon name="star"></ion-icon></button>
   </div>
+
   <br>
   <div>
     <ion-card-content>
@@ -36,6 +37,7 @@
       </font>
     </ion-card-content>
   </div>
+
   <br>
   <div>
     <ion-card-content>
@@ -50,9 +52,54 @@
       </font>
     </ion-card-content>
   </div>
+
+  <br>
+  <div>
+    <ion-card-content>
+      <ion-item>
+        <ion-card-header align="center" color="charity">
+          <font style="font-family: Poppins" size="4">
+            <b>Projects</b>
+          </font>
+        </ion-card-header>
+        <ion-slides>
+
+          <ion-card *ngIf="charProjects.length == 0">
+            <ion-item>
+              no current projects :(
+            </ion-item>
+          </ion-card>
+
+          <ion-slide *ngFor="let project of charProjects">
+            
+            <ion-card>
+              <ion-item>
+                <ion-avatar item-start>
+                  <img src="https://www.publicdomainpictures.net/pictures/60000/velka/toucan-bird-silhouette-clipart.jpg" />
+                </ion-avatar>
+                <h2 class="card-title" align="center">
+                  {{project.title}}
+                </h2>
+              </ion-item>
+
+              <ion-item>
+                <img src={{project.projectimg}}/>
+              </ion-item>
+              <ion-item>
+
+                <div class="card-subtitle">{{project.description}}</div>
+              </ion-item>
+            </ion-card>
+          </ion-slide>
+        </ion-slides>
+      </ion-item>
+    </ion-card-content>
+  </div>
+
+
   <br>
   <div align="center">
-    <button ion-button round outline small color="danger" (click)="navigateToPayment()" icon-start>
+    <button ion-button round outline color="danger" (click)="navigateToPayment()" icon-start>
       <font style="font-family: Poppins">Donate Now!&ensp;</font>
       <ion-icon name="arrow-forward"></ion-icon>
     </button>

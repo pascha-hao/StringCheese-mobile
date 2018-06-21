@@ -6,8 +6,10 @@ import { Charity } from '../../models/charityProfile';
 import { DonationsPage } from '../donations/donations';
 import { PaymentPage } from '../payment/payment';
 import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
+
+import { Http } from '@angular/http';
 import { ConfigService } from '../../config.service';
-import { Http } from "@angular/http";
+import { Project } from '../../models/project';
 
 /**
  * Generated class for the CharityPage page.
@@ -22,38 +24,68 @@ import { Http } from "@angular/http";
 })
 export class CharityPage {
 
-  public user: User = new User();
-  public charity: Charity = new Charity();
-  public star: string = "star-outline";
-  public fav: boolean = false;
-  jwt: string;
+    public user: User = new User();
+    public charity: Charity = new Charity();
+    public projects: Array<Project> = [];
+    public charProjects: Array <Project> = [];
+    public star: string = "star-outline";
+    public fav: boolean = false;
+    jwt: string;
+
+    constructor(
+      public navCtrl: NavController, 
+      public navParams: NavParams, 
+      public http: Http,
+      public configService: ConfigService,
+      public toastCtrl: ToastController
+    ) {
+      this.charity = this.navParams.get("charity");
+      this.user = this.navParams.get("user");
+      this.jwt = localStorage.getItem('jwt')
+      this.http
+        .get(this.configService.getBaseUrl() + "/projects")
+        .subscribe(
+          result => {
+            let i = 0;
+            while (i < result.json().length) {
+              this.projects.push(result.json()[i]);
+              i++;
+            }
+            for(let j=0; j<this.projects.length; j++) {
+              if(this.projects[j].charity_id === this.charity.id) {
+                this.charProjects.push(this.projects[j]);
+              }
+            }
+            
+            
+            this.http
+              .get(this.configService.getBaseUrl() + "/users", {
+                params: {
+                  jwt: this.jwt
+                }
+              })
+              .subscribe(
+                result => {
+                  let newUser = result.json().user;
+                  this.user = newUser;
+                },
+                error => {
+                  console.log(error);
+                }
+
+              );
 
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public toastCtrl: ToastController, private http: Http, public configService: ConfigService) {
-
-    this.user = this.navParams.get("user");
-    this.charity = this.navParams.get("charity");
-    this.jwt = localStorage.getItem('jwt')
-
-    this.http
-      .get(this.configService.getBaseUrl() + "/users", {
-        params: {
-          jwt: this.jwt
-        }
-      })
-      .subscribe(
-        result => {
-          let newUser = result.json().user;
-          this.user = newUser;
-        },
-        error => {
-          console.log(error);
-        }
-
-      );
+            }
+          }, 
+       
+          error => {
+            console.log(error);
+          }
+        )
+    }
 
 
-  }
 
   navigateToCharity(item) {
     this.navCtrl.push(CharityPage, {

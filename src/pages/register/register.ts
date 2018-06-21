@@ -25,7 +25,7 @@ export class RegisterPage {
   register() {
     if (this.user.password != this.confirmed) {
       alert('Passwords do not match.')
-    }
+    }   
     else {
       this.http
         .post(this.configService.getBaseUrl() + "/register", {
@@ -46,7 +46,7 @@ export class RegisterPage {
             });
           },
           error => {
-            console.log(error);
+            alert("Email is already registered");
           }      
       );
   }
