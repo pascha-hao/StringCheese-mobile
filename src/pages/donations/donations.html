@@ -1,33 +1,41 @@
 <ion-header>
-    <ion-navbar>
-      <ion-title>
-        Portfolio
-      </ion-title>
-    </ion-navbar>
-  </ion-header>
+  <ion-title>
+    <div align="center">
+      <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> donation history </p>
+    </div>
+  </ion-title>
+</ion-header>
 
-  <ion-fab left top>
-      <button ion-fab color="dark"><ion-icon name="arrow-dropright"></ion-icon></button>
-      <ion-fab-list side="right">
-        <button ion-fab><ion-icon name="logo-facebook"></ion-icon></button>
-        <button ion-fab><ion-icon name="logo-twitter"></ion-icon></button>
-        <button ion-fab><ion-icon name="logo-vimeo"></ion-icon></button>
-        <button ion-fab><ion-icon name="logo-googleplus"></ion-icon></button>
-      </ion-fab-list>
-  </ion-fab>
-  
-  <ion-content padding>
+<ion-fab left top>
+  <button ion-fab color="#eb3333">
+    <ion-icon name="arrow-dropright"></ion-icon>
+  </button>
+  <ion-fab-list side="right">
+    <button ion-fab>
+      <ion-icon name="stats" (click)="navTotalsPage()"></ion-icon>
+    </button>
+    <button ion-fab>
+      <ion-icon name="pie" (click)="navBreakdownPage()"></ion-icon>
+    </button>
+    <button ion-fab>
+      <ion-icon name="list-box" (click)="navHistoryPage()"></ion-icon>
+    </button>
+  </ion-fab-list>
+</ion-fab>
 
-    <ion-list>
-      <ion-item>
-          Total Amount Donated: ${{ total }}
-      </ion-item>
-  
-          <ion-item-divider color="dark">Donation History</ion-item-divider>
-          <ion-item *ngFor="let donation of donations">
-              <h2>Donated <b>${{ donation.amount }}</b> to <b>{{ donation.charity_name }}</b></h2>
-            </ion-item>
-    </ion-list>
-  
-  </ion-content>
-  
+<ion-content padding style="background-color:whitesmoke">
+
+  <div>
+    <ion-card-content>
+      <ion-list>
+        <ion-item *ngFor="let donation of donations">
+          <h2>
+            <b style="color: #eb3333">{{ donation.charity_name }}: </b> ${{ donation.amount }}
+          </h2>
+        </ion-item>
+      </ion-list>
+    </ion-card-content>
+  </div>
+
+
+</ion-content>

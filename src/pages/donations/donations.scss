@@ -4,6 +4,7 @@ page-donations {
        width: 95%;
        display: inline-block;
        margin: 1em 1em;
+       padding-top: 0;
     }
  
  
@@ -11,4 +12,10 @@ page-donations {
        height: 500px;
     }
  
+    ion-card-content {
+        background-color: white;
+        border-radius: 10px 10px 10px 10px;
+        border-top: 3px solid #eb3333;
+        border-bottom: 3px solid #eb3333;
+    }
  }
