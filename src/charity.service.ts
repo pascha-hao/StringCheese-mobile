@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Charity } from '../../stringcheese-mobile/src/models/charityProfile';
+import { Charity } from './models/charityProfile';
 import { Observable } from 'rxjs/Observable';
 // import { ArrayObservable } from 'rxjs/observable/ArrayObservable'
 import { Storage } from '@ionic/storage';
