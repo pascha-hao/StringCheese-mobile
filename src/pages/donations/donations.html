@@ -30,7 +30,8 @@
       <ion-list>
         <ion-item *ngFor="let donation of donations">
           <h2>
-            <b style="color: #eb3333">{{ donation.charity_name }}: </b> ${{ donation.amount }}
+              <b style="color: #eb3333">{{ donation.date }}:</b><br>
+              <b>{{ donation.charity_name }}: </b> ${{ donation.amount }}
           </h2>
         </ion-item>
       </ion-list>

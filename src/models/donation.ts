@@ -6,4 +6,5 @@ export class Donation {
     charity_name: string;
     is_subscription: boolean;
     //donate_date: DateTime;
+    date: string = "";
 }

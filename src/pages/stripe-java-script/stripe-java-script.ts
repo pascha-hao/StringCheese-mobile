@@ -220,6 +220,7 @@ export class StripeJavaScriptPage {
         amount: this.amount,
         charity_name: this.charity.name,
         //donate_date: Date.now()
+        date: new Date().toDateString(),
       })
       .subscribe(
         result => {
@@ -245,6 +246,7 @@ export class StripeJavaScriptPage {
         amount: this.amount,
         charity_name: this.charity.name,
         //donate_date: Date.now()
+        date: new Date().toDateString(),
       })
       .subscribe(
         result => {
