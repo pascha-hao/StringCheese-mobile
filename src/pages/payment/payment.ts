@@ -93,7 +93,7 @@ export class PaymentPage {
     console.log(this.charity.id);
     console.log(this.user.id);
     this.http
-      .post(this.configService.getBaseUrl() + "/totals", {
+      .post(this.configService.getBaseUrl() + "/donation", {
         charity_id: this.charity.id,
         user_id: this.user.id,
         amount: this.payment,
