@@ -31,6 +31,7 @@ export class BreakdownPage {
   public total: number = 0;
   public totals: Array<Donation> = [];
   public max: number = 0
+  public subs: Array<Donation> = [];
   jwt: string;
 
   constructor(public navCtrl: NavController,
@@ -46,37 +47,41 @@ export class BreakdownPage {
         result => {
           this.donations = result.json();
           var unique = true;
+          //var sub = false;
           console.log("were here")
           for (let i = 0; i < this.donations.length; i++) {
-            this.total += this.donations[i].amount;
-            console.log(this.total);
             console.log(this.donations);
-            for (let j = 0; j < this.totals.length; j++) {
-              if (this.totals[j].charity_id && (this.donations[i].charity_id == this.totals[j].charity_id)) {
+            for (let j = 0; j < this.subs.length; j++) {
+              if (this.donations[i].is_subscription && this.subs[j].charity_id && (this.donations[i].charity_id == this.subs[j].charity_id)) {
                 unique = false;
-                this.totals[j].amount += this.donations[i].amount;
-                console.log(this.totals);
+                //sub = true;
+                this.subs[j].amount += this.donations[i].amount;
+                this.total += this.donations[i].amount;
+                console.log(this.subs);
               }
             }
-            if (unique) {
-              this.totals.push(this.donations[i]);
+            if (unique && this.donations[i].is_subscription) {
+              //console.log(sub);
+              this.total += this.donations[i].amount;
+              this.subs.push(this.donations[i]);
             }
             unique = true;
+            //sub = false;
           }
           console.log("this is final");
-          console.log(this.totals);
+          console.log(this.subs);
 
-          this.max = this.totals[0].amount;
+          this.max = this.subs[0].amount;
 
-          for (var x = 0; x < this.totals.length; x++) {
+          for (var x = 0; x < this.subs.length; x++) {
             let newSlice = new Slice();
-            newSlice.technology = this.totals[x].charity_name;
-            if (this.totals[x].amount > this.max) {
-              this.max = this.totals[x].amount;
+            newSlice.technology = this.subs[x].charity_name;
+            if (this.subs[x].amount > this.max) {
+              this.max = this.subs[x].amount;
             }
             let colorArr: Array<string> = ["rgb(128,0,0)", "rgb(220,20,60)", "rgb(255,0,0)", "rgb(255,127,80)", "rgb(205,92,92)", "rgb(255,165,0)", "rgb(255,215,0)", "rgb(128,128,0)", "rgb(154,205,50)", "rgb(85,107,47)", "rgb(124,252,0)", "rgb(144,238,144)", "rgb(143,188,143)", "rgb(47,79,79)", "rgb(0,139,139)", "rgb(0,255,255)", "rgb(224,255,255)", "rgb(70,130,180)", "rgb(30,144,255)", "rgb(25,25,112)"];
     
-            newSlice.time = this.totals[x].amount;
+            newSlice.time = this.subs[x].amount;
             newSlice.color = colorArr[x];
             this.technologies.push(newSlice);
           }

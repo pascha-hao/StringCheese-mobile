@@ -44,8 +44,8 @@
                     <b>${{ total }}</b>
                   </ion-item>
                   <ion-item-divider style="font-family: Poppins; font-size: 18px; color: #eb3333"><b>Total Monthly Donation Per Charity:</b></ion-item-divider>
-                  <ion-item *ngFor="let total of totals">
-                      <h2><b>{{ total.charity_name }}</b>: ${{ total.amount }}</h2>
+                  <ion-item *ngFor="let sub of subs">
+                      <h2><b>{{ sub.charity_name }}</b>: ${{ sub.amount }}</h2>
                   </ion-item>
               </ion-list>
           </ion-card-content>

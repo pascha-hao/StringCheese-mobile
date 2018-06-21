@@ -32,8 +32,8 @@ export class StripeJavaScriptPage {
   amount: number;
   curency: string;
 
-  oneTime: boolean;
-  monthly: boolean;
+  oneTime: boolean = false;
+  monthly: boolean = true;
 
   public user: User = new User();
   public charity: Charity = new Charity();
@@ -190,13 +190,24 @@ export class StripeJavaScriptPage {
   }
 
   sendDonation() {
-    let toast = this.toastCtrl.create({
-      message: 'Donation Successful!',
-      duration: 3000
-    });
-    console.log('Donate clicked');
-    toast.present();
-    this.navigateToPortfolio();
+    if (this.oneTime){
+      let toast = this.toastCtrl.create({
+        message: 'Donation Successful!',
+        duration: 3000
+      });
+      console.log('Donate clicked');
+      toast.present();
+      this.navigateToPortfolio();
+    }
+    else if (this.monthly){
+      let toast = this.toastCtrl.create({
+        message: 'Subscription Successful!',
+        duration: 3000
+      });
+      console.log('Subscribe clicked');
+      toast.present();
+      this.navigateToBreakdown();
+    }
   }
 
   navigateToPortfolio() {
@@ -214,6 +225,31 @@ export class StripeJavaScriptPage {
         result => {
           console.log("whats going on")
           this.navCtrl.push(TotalsPage, {
+              user: this.user
+          });
+        },
+
+        error => {
+          console.log(error);
+        }
+      );
+  }
+
+  navigateToBreakdown() {
+    console.log(this.charity.id);
+    console.log(this.user.id);
+    this.http
+      .post(this.configService.getBaseUrl() + "/subscribe", {
+        charity_id: this.charity.id,
+        user_id: this.user.id,
+        amount: this.amount,
+        charity_name: this.charity.name,
+        //donate_date: Date.now()
+      })
+      .subscribe(
+        result => {
+          console.log("whats going on")
+          this.navCtrl.push(BreakdownPage, {
               user: this.user
           });
         },
