@@ -195,7 +195,7 @@ export class StripeJavaScriptPage {
     if (this.oneTime){
       let toast = this.toastCtrl.create({
         message: 'Donation Successful!',
-        duration: 3000
+        duration: 4000
       });
       console.log('Donate clicked');
       toast.present();
@@ -205,7 +205,7 @@ export class StripeJavaScriptPage {
     else if (this.monthly){
       let toast = this.toastCtrl.create({
         message: 'Subscription Successful!',
-        duration: 3000
+        duration: 4000
       });
       console.log('Subscribe clicked');
       toast.present();

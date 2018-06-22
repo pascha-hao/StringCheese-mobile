@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, ToastController } from 'ionic-angular';
 import { Http, Headers } from "@angular/http";
 
 import { HomePage } from '../home/home';
@@ -15,17 +15,38 @@ export class RegisterPage {
 
   public user: User = new User();
   public confirmed: string;
+  public users: Array<User> = [];
 
   constructor(
     public navCtrl: NavController, 
     public http: Http, 
-    public configService: ConfigService) {
+    public configService: ConfigService, 
+    public toastCtrl: ToastController,) {
   }
+
+  validateEmail(email) {
+    var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase());
+  }
+
+
 
   register() {
     if (this.user.password != this.confirmed) {
-      alert('Passwords do not match.')
-    }   
+      let toast = this.toastCtrl.create({
+        message: 'Passwords Do Not Match!',
+        duration: 3000
+      });
+      toast.present();
+    }
+    else if (!this.validateEmail(this.user.email)) {
+      let toast = this.toastCtrl.create({
+        message: 'Invalid Email Address!',
+        duration: 3000
+      });
+      toast.present();
+    }
+
     else {
       this.http
         .post(this.configService.getBaseUrl() + "/register", {
@@ -46,7 +67,11 @@ export class RegisterPage {
             });
           },
           error => {
-            alert("Email is already registered");
+            let toast = this.toastCtrl.create({
+              message: 'Email Address is Already Registered!',
+              duration: 3000
+            });
+            toast.present();
           }      
       );
   }
