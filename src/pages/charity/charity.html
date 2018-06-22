@@ -10,7 +10,7 @@
     <ion-title>
       <div align="center">
         <!-- <img src="https://static1.squarespace.com/static/530fd993e4b013842a38f1fd/t/53633a4ae4b0e2e552373eb5/1399011915390/fdgfdgdfgfd.png?format=300w" alt="logo"/> -->
-        <h1 style="font-family: Poppins; font-size: 15px; color: #eb3333"> {{charity.name}} </h1>
+        <b><h1 style="font-family: Poppins; font-size: 20px; color: #eb3333"> {{charity.name}} </h1></b>
       </div>
     </ion-title>
   </ion-navbar>
@@ -18,18 +18,31 @@
 </ion-header>
 
 <ion-content padding style="background-color:whitesmoke">
+    <div align="center">
+      <br><br>
+        <ion-img width="300" height="200" src="{{charity.charitycardimg}}"></ion-img>
+        <br>
+        <button ion-button round (click)="favorite()">
+          <b style="font-family: Poppins">Favorite&emsp;</b><b style="font-family: Poppins; font-size: 24px" ><ion-icon name="star"></ion-icon></b>
+        </button>
+      </div>
+      
+      <div align="center">
+          <button ion-button round (click)="navigateToPayment()" icon-start>
+            <b><font style="font-family: Poppins">Donate Now!&ensp;</font></b>
+            <ion-icon name="arrow-forward"></ion-icon>
+          </button>
+        </div>
 
-  <div align="center">
-      <ion-img width="200" height="150" src="{{charity.charitycardimg}}"></ion-img><br>
-      <button ion-button round (click)="favorite()"><ion-icon name="star"></ion-icon></button>
-  </div>
+
+    <!--<ion-img width="200" height="150" src="{{charity.charitycardimg}}"></ion-img> -->
 
   <br>
   <div>
     <ion-card-content>
       <ion-card-header align="center" color="charity">
         <font style="font-family: Poppins" size="4">
-          <b>Our Mission</b>
+          <b>{{charity.name}}</b>
         </font>
       </ion-card-header>
       <font style="font-family: Poppins; color: #626262" size="3.5">
@@ -71,7 +84,7 @@
           </ion-card>
 
           <ion-slide *ngFor="let project of charProjects">
-            
+
             <ion-card>
               <ion-item>
                 <ion-avatar item-start>

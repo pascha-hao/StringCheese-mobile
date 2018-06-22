@@ -20,5 +20,94 @@ page-charity {
         font-size: 13px;
     }
 
+    .about {
+        // text-align: left;
+        // align-content: center;
+        display: flex;
+        justify-content:left;
+        padding-top: 17px;
+        align-items: left;
+        font-size: 18px;
+        padding-left: 96px;
+    }
 
+
+    .charityDesc {
+        padding-top: 0px;
+    }
+
+    .charityHead {
+        font-size: 18px;
+        padding-left: 6px;
+    }
+
+    .charityHeadName {
+        font-size: 18px;
+        color: map-get($colors, primary);
+        font-weight: bold;
+    }
+
+    .location {
+        padding-top: 2px;
+        font-size: 14px;
+        color:  map-get($colors, primary);
+    }
+
+
+    .paymentButton {
+        padding-left: 0px;
+        padding-top: 0px;
+    }
+
+    .profilepic2 {
+        margin: auto;
+        height: 100px; 
+        width: 200px; 
+      // border: 2px solid #fff;
+       display: block;
+       border: 1px solid lightgray;
+       background-color: white;
+       padding-bottom: 1px;
+    }
+
+    .projpic {
+        margin: auto;
+        height: 260px; 
+        width: 280px; 
+        // border: 2px solid #fff;
+        //    border-radius: 50%;
+        //    box-shadow: 0 0 5px gray;
+        display: flex;
+        align-items: center;
+        border: 1px solid lightgray;
+        background-color: white;
+        padding-bottom: 0px;
+        //    display: block;
+    }
+
+    .statDesc {
+        padding-top: 0px;
+        align-items: ceiling;
+    }
+
+    .title {
+        // text-align: left;
+        // align-content: center;
+        text-emphasis: bold;
+        display: flex;
+        justify-content:center;
+        align-items: center;
+    }
+
+// .ion-header {
+//     display: flex;
+//     align-items: center;
+//     justify-content: center;
+//     font-weight: bold;
+//     background-color:#5677fc;
+// }
+// .my-background  {
+//     background-color:#5677fc;
+// }
+    
 }

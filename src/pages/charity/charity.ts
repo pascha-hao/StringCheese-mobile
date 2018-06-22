@@ -68,6 +68,7 @@ export class CharityPage {
                 result => {
                   let newUser = result.json().user;
                   this.user = newUser;
+                  
                 },
                 error => {
                   console.log(error);
