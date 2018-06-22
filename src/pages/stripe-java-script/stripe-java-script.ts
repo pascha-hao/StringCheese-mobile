@@ -15,6 +15,7 @@ import { Http } from "@angular/http";
 import { CharityPage } from '../charity/charity';
 //import { Charity } from '../../models/charityProfile';
 import { MyCharity } from '../../models/myCharity';
+import { TabsPage } from '../tabs/tabs';
 //import { User } from '../../models/user';
 //import { Http } from '@angular/http';
 //import { ConfigService } from '../../config.service';
@@ -190,6 +191,7 @@ export class StripeJavaScriptPage {
   }
 
   sendDonation() {
+    
     if (this.oneTime){
       let toast = this.toastCtrl.create({
         message: 'Donation Successful!',
@@ -198,6 +200,7 @@ export class StripeJavaScriptPage {
       console.log('Donate clicked');
       toast.present();
       this.navigateToPortfolio();
+      this.navCtrl.parent.select(1)
     }
     else if (this.monthly){
       let toast = this.toastCtrl.create({
@@ -207,6 +210,7 @@ export class StripeJavaScriptPage {
       console.log('Subscribe clicked');
       toast.present();
       this.navigateToBreakdown();
+      this.navCtrl.parent.select(1)
     }
   }
 

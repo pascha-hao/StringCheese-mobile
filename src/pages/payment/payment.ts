@@ -97,11 +97,11 @@ export class PaymentPage {
 
 
   ionViewDidLoad() {
-    this.setFilteredCharities();
+    //this.setFilteredCharities();
 
     this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
       this.searching = false;
-      this.setFilteredCharities();
+      //this.setFilteredCharities();
 
     });
 
@@ -112,9 +112,9 @@ export class PaymentPage {
     this.searching = true;
   }
 
-  setFilteredCharities() {
-    this.charities = this.charityService.filterCharities(this.searchText);
-  }
+  // setFilteredCharities() {
+  //   this.charities = this.charityService.filterCharities(this.searchText);
+  // }
 
 
   navigateToCharity(charity: Charity) {

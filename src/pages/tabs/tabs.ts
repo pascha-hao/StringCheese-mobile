@@ -15,7 +15,7 @@ import { ProfilePage } from '../profile/profile';
     <ion-tabs>
       <ion-tab tabIcon="compass" tabTitle="Browse" [root]="tab1"></ion-tab>
       <ion-tab tabIcon="stats" tabTitle="Donations" [root]="tab2"></ion-tab>
-      <ion-tab tabIcon="cash" tabTitle="Payment" [root]="tab3"></ion-tab>
+      <ion-tab tabIcon="star" tabTitle="Favorites" [root]="tab3"></ion-tab>
       <ion-tab tabIcon="person" tabTitle="Profile" [root]="tab4"></ion-tab>
     </ion-tabs>
   `
