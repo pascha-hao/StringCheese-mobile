@@ -63,21 +63,25 @@ export class PaymentPage {
                 this.myfavs = result.json();
                 for (var i = 0; i < this.myfavs.length; i++) {
                   this.charityids.push(this.myfavs[i].charity_id)
+                  console.log(this.charityids)
                 }
                 this.http
                   .get(this.configService.getBaseUrl() + "/charities")
                   .subscribe(
                     result => {
+                      this.tempcharities = result.json();
+                      console.log(this.tempcharities);
                       let i = 0;
-                      while (i < result.json().length) {
-                        this.tempcharities.push(result.json()[i]);
-                        i++;
-                      }
+                      // while (i < result.json().length) {
+                      //   this.tempcharities.push(result.json()[i]);
+                      //   i++;
+                      // }
                       for (var j = 0; j < this.charityids.length; j++) {
                         if (this.tempcharities[j].id == this.charityids[j]) {
                           this.charities.push(this.tempcharities[j]);
                         }
                       }
+                      console.log(this.charities);
                     },
                     error => {
                       console.log(error);

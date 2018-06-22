@@ -1,11 +1,13 @@
 <ion-content padding style="background-color:white">
 
 
-    <ion-header>
-        <ion-title>
-          <div align="center"><p style="font-family: Poppins; font-size: 25px; color: #eb3333"> toucan donate </p></div>
-        </ion-title>
-    </ion-header>
+  <ion-header>
+    <ion-title>
+      <div align="center">
+        <p style="font-family: Poppins; font-size: 25px; color: #eb3333"> toucan donate </p>
+      </div>
+    </ion-title>
+  </ion-header>
 
   <br>
   <br>
@@ -14,30 +16,31 @@
   <br>
   <br>
   <br>
-  <br>
 
-  <div align = "center">
-  <ion-img width="200" height="238" src="/assets/toucan.jpg"></ion-img>
-</div>
-  <ion-list>
-  <br>
-  <br>
-  <br>
-  <ion-item>
-      <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
-  </ion-item>
-  
-  <ion-item>
-      <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
-  </ion-item>
-  </ion-list> 
-  
   <div align="center">
-    <button ion-button round color= "danger" (click)="login()">Login</button>
-    <br><br><br><br><br><br>
-    Don't have an account?
+    <ion-img width="200" height="238" src="/assets/toucan.jpg"></ion-img>
+  </div>
+  <ion-list>
     <br>
-    <button ion-button clear (click)="navigateToRegister()" small>Sign up here</button>
+    <br>
+    <ion-item>
+      <ion-input type="text" placeholder="Email" [(ngModel)]="user.email"></ion-input>
+    </ion-item>
+
+    <ion-item>
+      <ion-input type="password" placeholder="Password" [(ngModel)]="user.password"></ion-input>
+    </ion-item>
+  </ion-list>
+
+  <div align="center">
+    <button ion-button round color="danger" (click)="login()">Login</button>
+    <p align="center" style="font-size: 8px; color: #eb3333">
+        <button ion-button clear (click)="forgot()" small>Forgot Password</button>
+    </p>
+    <br>
+    <br> Don't have an account?
+    <br>
+    <button ion-button clear (click)="navigateToRegister()" small>SIGN UP HERE</button>
   </div>
 
 </ion-content>
