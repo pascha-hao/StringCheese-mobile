@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController } from 'ionic-angular';
-//import { MyCharity } from '../../models/myCharity';
 import { User } from '../../models/user';
 import { Charity } from '../../models/charityProfile';
 import { DonationsPage } from '../donations/donations';
@@ -10,13 +9,6 @@ import { StripeJavaScriptPage } from '../stripe-java-script/stripe-java-script';
 import { Http } from '@angular/http';
 import { ConfigService } from '../../config.service';
 import { Project } from '../../models/project';
-
-/**
- * Generated class for the CharityPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
 
 @Component({
   selector: 'page-charity',
@@ -56,8 +48,7 @@ export class CharityPage {
                 this.charProjects.push(this.projects[j]);
               }
             }
-            
-            
+                       
             this.http
               .get(this.configService.getBaseUrl() + "/users", {
                 params: {
@@ -75,18 +66,12 @@ export class CharityPage {
                 }
 
               );
-
-
-            },
-           
-       
+            }, 
           error => {
             console.log(error);
           }
         )
     }
-
-
 
   navigateToCharity(item) {
     this.navCtrl.push(CharityPage, {
@@ -94,11 +79,6 @@ export class CharityPage {
       user: this.user
     });
   }
-
-  // ionViewDidLoad() {
-  //   this.user = this.navParams.get("user");
-  //   this.charity = this.navParams.get("charity");
-  // }
 
   navigateToDonations() {
     this.navCtrl.push(DonationsPage, {
@@ -171,8 +151,5 @@ export class CharityPage {
           console.log(error);
         }
       );
-
-
   }
-
 }
