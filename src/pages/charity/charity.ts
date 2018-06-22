@@ -76,8 +76,8 @@ export class CharityPage {
               );
 
 
-            }
-          }, 
+            },
+           
        
           error => {
             console.log(error);
