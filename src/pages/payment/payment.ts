@@ -27,8 +27,8 @@ export class PaymentPage {
   public isSearchbarOpened = false;
   public searchText: string = '';
   public searchControl: FormControl;
-  public tempcharities: Array<Charity> = [];
-  public charities: Array<Charity> = [];
+  public tempfavies: Array<Charity> = [];
+  public favies: Array<Charity> = [];
   public user: User = new User();
   public searching: any = false;
   public myfavs: Array<MyFavs> = [];
@@ -69,19 +69,21 @@ export class PaymentPage {
                   .get(this.configService.getBaseUrl() + "/charities")
                   .subscribe(
                     result => {
-                      this.tempcharities = result.json();
-                      console.log(this.tempcharities);
+                      this.tempfavies = result.json();
+                      console.log(this.tempfavies);
                       let i = 0;
                       // while (i < result.json().length) {
-                      //   this.tempcharities.push(result.json()[i]);
+                      //   this.tempfavies.push(result.json()[i]);
                       //   i++;
                       // }
-                      for (var j = 0; j < this.charityids.length; j++) {
-                        if (this.tempcharities[j].id == this.charityids[j]) {
-                          this.charities.push(this.tempcharities[j]);
+                      for (var j = 0; j < this.tempfavies.length; j++) {
+                        for (var x = 0; x < this.charityids.length; x++){
+                          if (this.tempfavies[j].id == this.charityids[x]) {
+                            this.favies.push(this.tempfavies[j]);
+                          }
                         }
                       }
-                      console.log(this.charities);
+                      console.log(this.favies);
                     },
                     error => {
                       console.log(error);
@@ -101,11 +103,11 @@ export class PaymentPage {
 
 
   ionViewDidLoad() {
-    //this.setFilteredCharities();
+    //this.setFilteredfavies();
 
     this.searchControl.valueChanges.debounceTime(700).subscribe(search => {
       this.searching = false;
-      //this.setFilteredCharities();
+      //this.setFilteredfavies();
 
     });
 
@@ -116,8 +118,8 @@ export class PaymentPage {
     this.searching = true;
   }
 
-  // setFilteredCharities() {
-  //   this.charities = this.charityService.filterCharities(this.searchText);
+  // setFilteredfavies() {
+  //   this.favies = this.charityService.filterfavies(this.searchText);
   // }
 
 
